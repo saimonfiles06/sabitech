@@ -72,4 +72,6 @@ Se acuerda empezar a mirar Docker.
 
 Envío al registrarse y previo al primer login??
 
-# 30/10/2026
+# 02/11/2026
+
+Se inicializa el repo y se empiezan a crear las carpetas que hacian falta a fecha de hoy
