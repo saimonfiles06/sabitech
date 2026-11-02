@@ -74,4 +74,5 @@ Envío al registrarse y previo al primer login??
 
 # 02/11/2026
 
-Se inicializa el repo y se empiezan a crear las carpetas que hacian falta a fecha de hoy
+Se inicializa el repo y se empiezan a crear las carpetas que hacian falta a fecha de hoy.
+Se revisa el diagrama E-R
