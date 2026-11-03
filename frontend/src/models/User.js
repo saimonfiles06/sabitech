@@ -24,7 +24,10 @@ export class User {
   get nombreCompleto() {
     return `${this.nombre} ${this.apellidos}`.trim();
   }
-  /** Builds a User from the API JSON (extra fields are ignored). */
+  /** Builds a User from the API JSON (extra fields are ignored).
+   * Creación objeto de usuario a partir de un JSON de la API
+   * (solo se han insertado los campos necesarios)
+   */
   static fromJSON(json) {
     return new User({
       id: json.id,
@@ -37,7 +40,9 @@ export class User {
     });
   }
 
-  /** Plain object, to save it in sessionStorage. */
+  /** Plain object, to save it in sessionStorage.
+   * Creación de un objeto plano, para guardarlo en sessionStorage
+   */
   toJSON() {
     return {
       id: this.id,
