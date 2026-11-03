@@ -86,3 +86,9 @@ Se crea rama frontend/modelos y rama frontend/api
 Revisión boceto diseño información charlas.
 
 Se elimina de forma temporal carpeta backend para focalizar trabajo en el front.
+
+Archivos carpeta API (Clarificación ENDPOINTS)
+Se revisa primero la API del proyecto de base-app como referencia
+
+1. ApiError.js; obligatorio y por el momento se decide CTRLC+CTRLV desde el ejemplo
+2.
