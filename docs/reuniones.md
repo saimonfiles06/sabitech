@@ -81,4 +81,6 @@ Se revisa el diagrama E-R
 
 Se revisan y validan las entidades y atributos de la base de datos y se empiezan a crear los modelos dentro de frontend/src/models/
 
+Se crea rama frontend/modelos y rama frontend/api
+
 Revisión boceto diseño información charlas.

@@ -4,12 +4,16 @@
 export class Reserva {
   constructor({
     id,
-    usuario_id,
-    charla_id,
-    fecha_actualizacion,
-    estado,
-    correo_enviado,
-    fecha_cancelacion,
+    usuario_id = "",
+    charla_id = "",
+    fecha_actualizacion = "",
+    estado = "",
+    /**
+     * false por defecto;
+     *  se modificará cuando se obtenga la confirmación de envío del servidor
+     * */
+    correo_enviado = false,
+    fecha_cancelacion = "",
   }) {
     this.id = id;
     this.usuario_id = usuario_id;
