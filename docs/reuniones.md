@@ -76,3 +76,9 @@ Envío al registrarse y previo al primer login??
 
 Se inicializa el repo y se empiezan a crear las carpetas que hacian falta a fecha de hoy.
 Se revisa el diagrama E-R
+
+# 03/11/2026
+
+Se revisan y validan las entidades y atributos de la base de datos y se empiezan a crear los modelos dentro de frontend/src/models/
+
+Revisión boceto diseño información charlas.
