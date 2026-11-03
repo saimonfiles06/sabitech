@@ -92,3 +92,5 @@ Se revisa primero la API del proyecto de base-app como referencia
 
 1. ApiError.js; obligatorio y por el momento se decide CTRLC+CTRLV desde el ejemplo
 2.
+
+## Dudas funcionalidades
