@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="Página-1" id="WdI0T_XYanOy-96tKKAH">
-    <mxGraphModel dx="2512" dy="234" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1894" dy="-64" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -222,7 +222,7 @@
         <mxCell id="DvhG5cUbhPt8cnd8sc7Q-74" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="estado (confirmada/cancelada)" vertex="1">
           <mxGeometry height="80" width="120" x="458" y="1173" as="geometry" />
         </mxCell>
-        <mxCell id="DvhG5cUbhPt8cnd8sc7Q-75" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="created / updated" vertex="1">
+        <mxCell id="DvhG5cUbhPt8cnd8sc7Q-75" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="fecha_creacion" vertex="1">
           <mxGeometry height="80" width="120" x="568" y="1113" as="geometry" />
         </mxCell>
         <mxCell id="DvhG5cUbhPt8cnd8sc7Q-76" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;" value="correo_enviado_en" vertex="1">

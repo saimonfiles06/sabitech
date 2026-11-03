@@ -84,3 +84,5 @@ Se revisan y validan las entidades y atributos de la base de datos y se empiezan
 Se crea rama frontend/modelos y rama frontend/api
 
 Revisión boceto diseño información charlas.
+
+Se elimina de forma temporal carpeta backend para focalizar trabajo en el front.
