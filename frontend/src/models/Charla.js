@@ -1,5 +1,18 @@
 export class Charla {
-	constructor({ id, titulo, rama, resContenido, contenido, imagen = 'XtartLogo', fecha, fechaEntrada, duracion, ponente, responsable, idSala }) {
+	constructor({ 
+        id, 
+        titulo = "", 
+        rama = "", 
+        resContenido = "", 
+        contenido = "", 
+        imagen = 'XtartLogo', 
+        fecha = "", 
+        fechaEntrada = "", 
+        duracion = "", 
+        ponente = "", 
+        responsable = "", 
+        idSala = "" 
+    }) {
 		this.id = id;
 		this.titulo = titulo;
 		this.rama = rama;

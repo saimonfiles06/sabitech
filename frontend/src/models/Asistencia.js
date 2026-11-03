@@ -1,5 +1,11 @@
 export class Asistencia {
-  constructor({ id, reservaId, horaEntrada, registrada_en, registrada_por }) {
+  constructor({
+    id,
+    reservaId = "",
+    horaEntrada = "",
+    registrada_en = "",
+    registrada_por = "",
+  }) {
     this.id = id;
     this.reservaId = reservaId;
     this.horaEntrada = horaEntrada;

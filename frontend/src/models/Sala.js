@@ -1,5 +1,9 @@
 export class Sala {
-  constructor({ id, nombre, aforo }) {
+  constructor({ 
+    id, 
+    nombre = "", 
+    aforo = ""
+}) {
     this.id = id;
     this.nombre = nombre;
     this.aforo = aforo;
