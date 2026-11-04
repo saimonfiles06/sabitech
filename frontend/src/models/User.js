@@ -10,6 +10,7 @@ export class User {
     correo = "",
     contraseña = "",
     fecha_alta,
+    rol = "",
     correo_confirmado = "",
   }) {
     this.id = id;
@@ -18,6 +19,7 @@ export class User {
     this.correo = correo;
     this.contraseña = contraseña;
     this.fecha_alta = fecha_alta;
+    this.rol = rol;
     this.correo_confirmado = correo_confirmado;
   }
   /** "Emily Johnson" */
@@ -36,6 +38,7 @@ export class User {
       correo: json.correo,
       contraseña: json.contraseña,
       fecha_alta: json.fecha_alta,
+      rol: json.rol,
       correo_confirmado: json.correo_confirmado,
     });
   }
@@ -51,6 +54,7 @@ export class User {
       correo: this.correo,
       contraseña: this.contraseña,
       fecha_alta: this.fecha_alta,
+      rol: this.rol,
       correo_confirmado: this.correo_confirmado,
     };
   }
