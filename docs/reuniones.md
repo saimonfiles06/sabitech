@@ -103,3 +103,4 @@ Se revisa primero la API del proyecto de base-app como referencia
 
 Se realiza revisión avances del 03/11/2026,
 Se crea carpeta backend y se instala Laravel
+Se revisa diagrama ER; Se crean entidades Ponente y Responsable
