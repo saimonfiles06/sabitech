@@ -97,4 +97,9 @@ Se revisa primero la API del proyecto de base-app como referencia
 
 ## Dudas funcionalidades
 
+1. Número de ponentes en cada charla; Es 1 solo ponente o puede tener colaboradores??
+
 # 04/11/2026
+
+Se realiza revisión avances del 03/11/2026,
+Se crea carpeta backend y se instala Laravel
