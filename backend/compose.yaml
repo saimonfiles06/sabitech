@@ -1,0 +1,22 @@
+name: sabitech-despliegue
+
+services:
+  web:
+    build: .
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - ./app:/var/www/html
+
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: sabitech
+      MYSQL_USER: sabitech_user
+      MYSQL_PASSWORD: Aula_Sabitech_2026
+      MYSQL_ROOT_PASSWORD: Aula_Root_2026
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

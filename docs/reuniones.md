@@ -87,6 +87,8 @@ Revisión boceto diseño información charlas.
 
 Se elimina de forma temporal carpeta backend para focalizar trabajo en el front.
 
+Se acuerda no hacer merges hasta no necesitar probar la funcionalidad
+
 Archivos carpeta API (Clarificación ENDPOINTS)
 Se revisa primero la API del proyecto de base-app como referencia
 
@@ -94,3 +96,5 @@ Se revisa primero la API del proyecto de base-app como referencia
 2.
 
 ## Dudas funcionalidades
+
+# 04/11/2026
