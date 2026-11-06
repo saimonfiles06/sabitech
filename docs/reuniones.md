@@ -104,3 +104,8 @@ Se revisa primero la API del proyecto de base-app como referencia
 Se realiza revisión avances del 03/11/2026,
 Se crea carpeta backend y se instala Laravel
 Se revisa diagrama ER; Se crean entidades Ponente y Responsable
+
+# 06/11/2026
+
+Creación migraciones: docker compose exec web php artisan make:migration create_tablename_table
+Se tiene que cambiar tablename por el nombre de la tabla que queramos crear.
