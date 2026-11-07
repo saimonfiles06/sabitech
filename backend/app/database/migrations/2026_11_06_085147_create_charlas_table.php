@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('charlas', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo');
+            $table->enum('rama', ['Salud', 'Business', 'Tech']);
+            $table->foreignId('ponente_id')->constrained('usuarios');
+            $table->string('resumen_contenido')->nullable();
+            $table->string('contenido');
+            $table->string('url_imagen')->nullable();
+            $table->foreignId('sala_id')->constrained('salas');
+            $table->date('fecha_hora_charla');
+            $table->date('fecha_hora_entrada');
+            $table->date('fecha_hora_fin');
+            $table->integer('contador_+info');
             $table->timestamps();
         });
     }
