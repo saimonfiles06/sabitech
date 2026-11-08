@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('contenido');
             $table->string('url_imagen')->nullable();
             $table->foreignId('sala_id')->constrained('salas');
-            $table->date('fecha_hora_charla');
-            $table->date('fecha_hora_entrada');
-            $table->date('fecha_hora_fin');
+            $table->dateTime('fecha_hora_charla');
+            $table->dateTime('fecha_hora_entrada');
+            $table->dateTime('fecha_hora_fin');
             $table->integer('contador_+info');
             $table->timestamps();
         });

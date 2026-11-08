@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('usuario_id')->constrained('usuarios');
+            $table->foreignId('charla_id')->constrained('charlas');
+            $table->string('estado');
+            $table->dateTime('creado_editado');
+            $table->dateTime('correo_enviado_en');
+            $table->dateTime('hora_entrada');
             $table->timestamps();
+
+            // Restrigción de reserva unica.
+            // Un usuario solo podrá reservar una vez la charla.
+            $table->unique(['usuario_id', 'charla_id']);
         });
     }
 
