@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('salas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100);
-            $table->integer('aforo', 2);
+            //No usar integer ya que el aforo de una sala no puede ser negativo,
+            // por lo que se usará unsignedSmallInteger
+            $table->unsignedSmallInteger('aforo');
+            $table->timestamps();
         });
     }
 

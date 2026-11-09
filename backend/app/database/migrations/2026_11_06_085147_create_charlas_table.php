@@ -13,17 +13,21 @@ return new class extends Migration
     {
         Schema::create('charlas', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
+            $table->string('titulo', 80);
             $table->enum('rama', ['Salud', 'Business', 'Tech']);
             $table->foreignId('ponente_id')->constrained('usuarios');
             $table->string('resumen_contenido')->nullable();
-            $table->string('contenido');
+            $table->text('contenido'); // Se configura como text para que pueda contener más de 255 caracteres
             $table->string('url_imagen')->nullable();
             $table->foreignId('sala_id')->constrained('salas');
             $table->dateTime('fecha_hora_charla');
             $table->dateTime('fecha_hora_entrada');
             $table->dateTime('fecha_hora_fin');
-            $table->integer('contador_+info');
+            $table->integer('contador_+info')->unsignedInteger('contador_info')->default(0);
+            //Campo estado para indicar si la charla está
+            // activa, en edición, finalizada o cancelada,
+            // por defecto será activa
+            $table->enum('estado', ['activa', 'en edición', 'finalizada', 'cancelada'])->default('activa');
             $table->timestamps();
         });
     }

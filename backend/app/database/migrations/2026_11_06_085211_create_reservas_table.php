@@ -15,13 +15,16 @@ return new class extends Migration
             $table->id();
             $table->foreignId('usuario_id')->constrained('usuarios');
             $table->foreignId('charla_id')->constrained('charlas');
-            $table->string('estado');
+            //Para el checkpoint el estado default será confirmada, 
+            //pero en un futuro se cambiará a pendiente,
+            // ya que el usuario tendrá que confirmar la reserva mediante un correo electrónico.
+            $table->enum('estado', ['confirmada', 'cancelada'])->default('confirmada');
             $table->dateTime('creado_editado');
             $table->dateTime('correo_enviado_en');
-            $table->dateTime('hora_entrada');
-            $table->timestamps();
+            $table->dateTime('hora_entrada')->nullable();
+            $table->timestamps('creado_editado');
 
-            // Restrigción de reserva unica.
+            // Restricción de reserva unica.
             // Un usuario solo podrá reservar una vez la charla.
             $table->unique(['usuario_id', 'charla_id']);
         });

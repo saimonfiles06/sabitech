@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 25);
+            $table->string('nombre', 50);
             $table->string('apellidos', 50);
             $table->string('correo_electronico', 50)->unique();
             $table->string('password');
-            $table->dateTime('fecha_alta');
-            $table->enum('rol', ['usuario', 'administrador', 'ponente', 'supervisor']);
-            $table->datetimes('correo_confirmado');
-            $table->timestamps();
+            //enum para que el rol solo pueda ser usuario, administrador, ponente o supervisor,
+            //  por defecto será usuario
+            $table->enum('rol', ['usuario', 'administrador', 'ponente', 'supervisor'])->default('usuario');
+            $table->dateTime('correo_confirmado')->nullable();
+            $table->timestamps('fecha_alta');
         });
     }
 
