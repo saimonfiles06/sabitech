@@ -109,3 +109,7 @@ Se revisa diagrama ER; Se crean entidades Ponente y Responsable
 
 Creación migraciones: docker compose exec web php artisan make:migration create_tablename_table
 Se tiene que cambiar tablename por el nombre de la tabla que queramos crear.
+
+# 09/11/2026
+
+Se revisan y corrigen las migraciones, se acuerda dejar la implementación de Swagger para la consulta de los endpoints para después del checkpoint.
