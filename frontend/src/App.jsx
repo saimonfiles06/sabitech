@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { HelloWorld } from "./components/HelloWorld";
+import { ListarCharlasButton } from "./components/ListarCharlasButton";
 import heroImg from "./assets/hero.png";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <HelloWorld />
+      <ListarCharlasButton />
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
