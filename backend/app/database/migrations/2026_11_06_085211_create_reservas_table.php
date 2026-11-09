@@ -19,10 +19,9 @@ return new class extends Migration
             //pero en un futuro se cambiará a pendiente,
             // ya que el usuario tendrá que confirmar la reserva mediante un correo electrónico.
             $table->enum('estado', ['confirmada', 'cancelada'])->default('confirmada');
-            $table->dateTime('creado_editado');
-            $table->dateTime('correo_enviado_en');
+            $table->dateTime('correo_enviado_en')->nullable();
             $table->dateTime('hora_entrada')->nullable();
-            $table->timestamps('creado_editado');
+            $table->timestamps();
 
             // Restricción de reserva unica.
             // Un usuario solo podrá reservar una vez la charla.

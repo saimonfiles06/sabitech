@@ -23,11 +23,11 @@ return new class extends Migration
             $table->dateTime('fecha_hora_charla');
             $table->dateTime('fecha_hora_entrada');
             $table->dateTime('fecha_hora_fin');
-            $table->integer('contador_+info')->unsignedInteger('contador_info')->default(0);
+            $table->unsignedInteger('contador_+info')->default(0);
             //Campo estado para indicar si la charla está
             // activa, en edición, finalizada o cancelada,
             // por defecto será activa
-            $table->enum('estado', ['activa', 'en edición', 'finalizada', 'cancelada'])->default('activa');
+            $table->enum('estado', ['activa', 'en_edicion', 'finalizada', 'cancelada'])->default('activa');
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@ return new class extends Migration
             //  por defecto será usuario
             $table->enum('rol', ['usuario', 'administrador', 'ponente', 'supervisor'])->default('usuario');
             $table->dateTime('correo_confirmado')->nullable();
-            $table->timestamps('fecha_alta');
+            $table->timestamps();
         });
     }
 
