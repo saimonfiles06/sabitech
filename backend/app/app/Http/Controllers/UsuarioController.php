@@ -22,7 +22,7 @@ class UsuarioController extends Controller
         ->orderBy('id')
         ->get();
 
-        return response()->json($usuarios);
+        return response()->json(['data => $usuarios']);
 
         // Respuesta JSON
         // ==============

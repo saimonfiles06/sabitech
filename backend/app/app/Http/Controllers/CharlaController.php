@@ -12,24 +12,24 @@ class CharlaController extends Controller
         ->join('usuarios', 'charlas.ponente_id', '=', 'usuarios.id')
         ->join('salas', 'charlas.sala_id', '=', 'salas.id')
         ->select(
-            'charla.id',
-            'charla.titulo',
-            'charla.rama',
+            'charlas.id',
+            'charlas.titulo',
+            'charlas.rama',
             'usuarios.nombre AS nombre_ponente',
             'usuarios.apellidos AS apellidos_ponente',
-            'charla.resumen_contenido',
-            'charla.contenido',
-            'charla.url_imagen',
-            'salas.nombre',
-            'charla.fecha_charla',
-            'charla.hora_entrada',
-            'charla.hora_fin',
+            'charlas.resumen_contenido',
+            'charlas.contenido',
+            'charlas.url_imagen',
+            'salas.nombre AS nombre_sala',
+            'charlas.fecha_hora_charla',
+            'charlas.fecha_hora_entrada',
+            'charlas.fecha_hora_fin',
         )
 
-        ->orderBy('id')
+        ->orderBy('charlas.id')
         ->get();
 
-        return response()->json($charlas);
+        return response()->json(['data' => $charlas]);
 
         // Respuesta JSON
         // ==============

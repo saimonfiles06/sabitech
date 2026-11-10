@@ -19,6 +19,6 @@ class PruebaController extends Controller
         ->orderBy('id')
         ->get();
 
-        return response()->json($prueba,200);
+        return response()->json(['data' => $prueba,200]);
     }
 }

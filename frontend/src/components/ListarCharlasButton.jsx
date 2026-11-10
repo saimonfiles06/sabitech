@@ -1,4 +1,4 @@
-import { list } from "../api/PruebaApi.js";
+import { list } from "../api/CharlaApi.js";
 
 export function ListarCharlasButton() {
   async function listarCharlas() {
