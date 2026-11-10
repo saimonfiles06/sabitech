@@ -1,15 +1,13 @@
-/**
- * Page — a page of results. Every DummyJSON list is { <name>: [...], total, skip, limit }:
- *   Page.fromJSON(json, 'todos', Todo.fromJSON) → a Page whose items are Todo objects.
- */
 export class Page {
-  constructor({ items }) {
-    this.items = items;
+  constructor({ elementos, total }) {
+    this.elementos = elementos;
+    this.total = total;
   }
 
-  /** listKey: name of the array ("todos", "products"…); mapFn: turns each raw item into a model. */
-  static fromJSON(json, listKey, mapFn) {
-    const rawItems = Array.isArray(json[listKey]) ? json[listKey] : [];
-    return rawItems.map(mapFn);
+  static fromJSON(json, funcionCrear) {
+    const listaCruda = Array.isArray(json.data) ? json.data : [];
+    const elementos = listaCruda.map((elementoCrudo) => funcionCrear(elementoCrudo));
+    const total = json.meta?.total ?? elementos.length;
+    return new Page({ elementos, total });
   }
 }

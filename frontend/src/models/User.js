@@ -8,6 +8,13 @@
 // rol
 // correo_confirmado
 // fecha_alta
+// id
+// nombre
+// apellidos
+// correo_electronico
+// rol
+// correo_confirmado
+// fecha_alta
 export class User {
   constructor({
     id,
@@ -17,6 +24,7 @@ export class User {
     rol = "",
     correo_confirmado = "",
     fecha_alta,
+    fecha_alta,
   }) {
     this.id = id;
     this.nombre = nombre;
@@ -24,6 +32,7 @@ export class User {
     this.correo = correo;
     this.rol = rol;
     this.correo_confirmado = correo_confirmado;
+    this.fecha_alta = fecha_alta;
     this.fecha_alta = fecha_alta;
   }
   /** "Emily Johnson" */
@@ -57,6 +66,7 @@ export class User {
       correo: this.correo,
       rol: this.rol,
       correo_confirmado: this.correo_confirmado,
+      fecha_alta: this.fecha_alta,
       fecha_alta: this.fecha_alta,
     };
   }
