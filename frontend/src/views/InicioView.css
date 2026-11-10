@@ -1,0 +1,57 @@
+.inicio {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  text-align: left;
+}
+
+.inicio-bloque {
+  margin-bottom: 40px;
+}
+
+.inicio-mensaje {
+  text-align: center;
+  padding: 40px;
+}
+
+.etiqueta-rama {
+  font-size: 12px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+.titulo-charla {
+  display: block;
+  margin: 8px 0 4px;
+}
+
+.resumen-charla {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.tabla-contenedor.tabla-charlas {
+  max-height: none;
+}
+
+.tabla-contenedor {
+  max-height: 360px;
+  overflow-y: auto;
+  border: 1px solid #8884;
+  border-radius: 8px;
+}
+
+.tabla-contenedor table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-contenedor th,
+.tabla-contenedor td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #8883;
+  vertical-align: top;
+}

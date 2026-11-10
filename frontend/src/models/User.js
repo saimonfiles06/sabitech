@@ -39,10 +39,10 @@ export class User {
       id: json.id,
       nombre: json.nombre,
       apellidos: json.apellidos,
-      correo: json.correo,
+      correo: json.correo_electronico,
       rol: json.rol,
       correo_confirmado: json.correo_confirmado,
-      fecha_alta: json.fecha_alta,
+      fecha_alta: json.created_at,
     });
   }
 

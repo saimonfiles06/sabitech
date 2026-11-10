@@ -1,5 +1,4 @@
 import { ApiError } from "./ApiError.js";
-import { Page } from "../models/Page.js";
 import { User } from "../models/User.js";
 
 const API_BASE_URL = "http://localhost:8080/api/";
