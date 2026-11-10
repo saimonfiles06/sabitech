@@ -35,3 +35,18 @@ Y con este vemos el numero de usuarios con cada rol.
 ```bash
 docker compose exec db mysql -u sabitech_user -pAula_Sabitech_2026 sabitech -e "SELECT rol, COUNT(*) FROM usuarios GROUP BY rol;"
 ```
+
+**Instalación de Sanctum en el backend**
+Esta parte solo lo hace uno, en este caso lo he hecho yo (David).
+
+*No ejecuteis estos comandos*, hacen la primera instalación.
+```bash
+docker compose exec web php artisan install:api
+```
+
+Lo que tenéis que hacer es:
+Actualizar el repositorio y después en el directorio de Backend ejecutar...
+```bash
+docker compose exec web composer install
+docker compose exec web php artisan migrate
+```

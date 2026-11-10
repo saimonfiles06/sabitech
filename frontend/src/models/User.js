@@ -1,26 +1,39 @@
 /**
  * User model
  */
-
+// id
+// nombre
+// apellidos
+// correo_electronico
+// rol
+// correo_confirmado
+// fecha_alta
+// id
+// nombre
+// apellidos
+// correo_electronico
+// rol
+// correo_confirmado
+// fecha_alta
 export class User {
   constructor({
     id,
     nombre = "",
     apellidos = "",
     correo = "",
-    contraseña = "",
-    fecha_alta,
     rol = "",
     correo_confirmado = "",
+    fecha_alta,
+    fecha_alta,
   }) {
     this.id = id;
     this.nombre = nombre;
     this.apellidos = apellidos;
     this.correo = correo;
-    this.contraseña = contraseña;
-    this.fecha_alta = fecha_alta;
     this.rol = rol;
     this.correo_confirmado = correo_confirmado;
+    this.fecha_alta = fecha_alta;
+    this.fecha_alta = fecha_alta;
   }
   /** "Emily Johnson" */
   get nombreCompleto() {
@@ -35,11 +48,10 @@ export class User {
       id: json.id,
       nombre: json.nombre,
       apellidos: json.apellidos,
-      correo: json.correo,
-      contraseña: json.contraseña,
-      fecha_alta: json.fecha_alta,
+      correo: json.correo_electronico,
       rol: json.rol,
       correo_confirmado: json.correo_confirmado,
+      fecha_alta: json.created_at,
     });
   }
 
@@ -52,10 +64,10 @@ export class User {
       nombre: this.nombre,
       apellidos: this.apellidos,
       correo: this.correo,
-      contraseña: this.contraseña,
-      fecha_alta: this.fecha_alta,
       rol: this.rol,
       correo_confirmado: this.correo_confirmado,
+      fecha_alta: this.fecha_alta,
+      fecha_alta: this.fecha_alta,
     };
   }
 }
