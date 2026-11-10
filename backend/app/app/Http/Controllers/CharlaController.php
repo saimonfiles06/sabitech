@@ -29,7 +29,7 @@ class CharlaController extends Controller
         ->orderBy('charlas.id')
         ->get();
 
-        return response()->json(['data' => $charlas]);
+        return response()->json($charlas, 200);
 
         // Respuesta JSON
         // ==============
