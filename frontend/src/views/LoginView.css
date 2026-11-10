@@ -1,0 +1,191 @@
+/* -------------------------
+   CONTENEDOR PRINCIPAL
+------------------------- */
+
+.login {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* -------------------------
+   TARJETA DE LOGIN
+------------------------- */
+
+.login-contenedor {
+  width: 100%;
+  max-width: 420px;
+  padding: 36px;
+  border: 1px solid #8884;
+  border-radius: 12px;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+/* -------------------------
+   CABECERA
+------------------------- */
+
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-header h1 {
+  margin: 0 0 28px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.login-header h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.login-header p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+/* -------------------------
+   FORMULARIO
+------------------------- */
+
+.login-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.login-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-campo label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.login-campo input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #8885;
+  border-radius: 8px;
+  background-color: transparent;
+  color: inherit;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.login-campo input::placeholder {
+  opacity: 0.55;
+}
+
+.login-campo input:focus {
+  border-color: #3986c8;
+  box-shadow: 0 0 0 3px #3986c833;
+}
+
+/* -------------------------
+   CONTRASEÑA
+------------------------- */
+
+.login-password {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-password input {
+  padding-right: 85px;
+}
+
+.login-password-toggle {
+  position: absolute;
+  right: 12px;
+  padding: 4px;
+  border: none;
+  background: none;
+  color: #3986c8;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-password-toggle:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------
+   ERRORES
+------------------------- */
+
+.login-error {
+  margin: -8px 0 0;
+  color: #d64545;
+  font-size: 13px;
+}
+
+/* -------------------------
+   BOTÓN PRINCIPAL
+------------------------- */
+
+.login-boton {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3986c8;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-boton:hover {
+  background-color: #2873b3;
+}
+
+.login-boton:focus-visible,
+.login-password-toggle:focus-visible {
+  outline: 2px solid #3986c8;
+  outline-offset: 3px;
+}
+
+/* -------------------------
+   PIE DEL FORMULARIO
+------------------------- */
+
+.login-footer {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.login-footer p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.login-footer a {
+  color: #3986c8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
