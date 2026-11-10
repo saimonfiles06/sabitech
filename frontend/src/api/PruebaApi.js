@@ -3,7 +3,7 @@ import { ApiError } from "./ApiError.js";
 import { Page } from "../models/Page.js";
 
 const API_BASE_URL = "http://localhost:8080/api/";
-const CHARLAS_URL = `${API_BASE_URL}charlas/`;
+const CHARLAS_URL = `${API_BASE_URL}charlas`;
 
 export async function list() {
   const response = await fetch(`${CHARLAS_URL}`);
