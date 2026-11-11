@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ApiError } from "../api/ApiError.js";
+import { useAuth } from "../auth/ContextoAuth.jsx";
 import "./LoginView.css";
 
 export function LoginView() {
@@ -6,8 +9,12 @@ export function LoginView() {
   const [password, setPassword] = useState("");
   const [mostrarPassword, setMostrarPassword] = useState(false);
   const [error, setError] = useState("");
+  const [enviando, setEnviando] = useState(false);
 
-  function handleSubmit(e) {
+  const { iniciarSesion } = useAuth();
+  const navegar = useNavigate();
+
+  async function handleSubmit(e) {
     e.preventDefault();
 
     setError("");
@@ -22,11 +29,22 @@ export function LoginView() {
       return;
     }
 
-    // Pendiente: conectar con Laravel Sanctum
-    console.log({
-      correo: correo.trim(),
-      password,
-    });
+    setEnviando(true);
+
+    try {
+      await iniciarSesion(correo.trim(), password);
+      navegar("/");
+    } catch (fallo) {
+      if (fallo instanceof ApiError && fallo.status === 429) {
+        setError("Demasiados intentos. Espera un minuto y vuelve a probar.");
+      } else if (fallo instanceof ApiError) {
+        setError(fallo.message);
+      } else {
+        setError("No se puede conectar con el servidor.");
+      }
+    } finally {
+      setEnviando(false);
+    }
   }
 
   return (
@@ -79,6 +97,10 @@ export function LoginView() {
               >
                 {mostrarPassword ? "Ocultar" : "Mostrar"}
               </button>
+
+              <button type="submit" className="login-boton" disabled={enviando}>
+                {enviando ? "Entrando..." : "Iniciar sesión"}
+              </button>
             </div>
           </div>
 
@@ -95,7 +117,7 @@ export function LoginView() {
 
         <footer className="login-footer">
           <p>
-            ¿Todavía no tienes una cuenta? <a href="/registro">Regístrate</a>
+            ¿Todavía no tienes una cuenta? <Link to="/registro">Regístrate</Link>
           </p>
         </footer>
       </section>

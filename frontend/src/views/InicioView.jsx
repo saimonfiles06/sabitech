@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { list as listarCharlas } from "../api/CharlaApi.js";
 import { list as listarUsuarios } from "../api/UsuarioApi.js";
+import { Link } from "react-router-dom";
+import { useAuth } from "../auth/ContextoAuth.jsx";
 import "./InicioView.css";
 
 /** "2026-12-01 09:30:00" -> "1 dic, 09:30" */
@@ -22,6 +24,7 @@ export function InicioView() {
   const [usuarios, setUsuarios] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
+  const { usuario, cerrarSesion } = useAuth();
 
   useEffect(() => {
     async function cargarDatos() {
@@ -54,13 +57,29 @@ export function InicioView() {
         </a>
 
         <nav className="inicio-accesos">
-          <a href="/login" className="inicio-boton-login">
-            Iniciar sesión
-          </a>
+          {usuario ? (
+            <>
+              <span>Hola, {usuario.nombre}</span>
 
-          <a href="/registro" className="inicio-boton-registro">
-            Crear cuenta
-          </a>
+              <button
+                type="button"
+                className="inicio-boton-login"
+                onClick={cerrarSesion}
+              >
+                Cerrar sesión
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="inicio-boton-login">
+                Iniciar sesión
+              </Link>
+
+              <Link to="/registro" className="inicio-boton-registro">
+                Crear cuenta
+              </Link>
+            </>
+          )}
         </nav>
       </header>
 

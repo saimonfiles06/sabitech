@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ApiError } from "../api/ApiError.js";
+import { useAuth } from "../auth/ContextoAuth.jsx";
 import "./RegisterView.css";
 
 export function RegisterView() {
@@ -13,8 +16,12 @@ export function RegisterView() {
     useState(false);
 
   const [error, setError] = useState("");
+  const [enviando, setEnviando] = useState(false);
 
-  function handleSubmit(e) {
+  const { registrarse } = useAuth();
+  const navegar = useNavigate();
+
+  async function handleSubmit(e) {
     e.preventDefault();
 
     setError("");
@@ -37,18 +44,44 @@ export function RegisterView() {
       return;
     }
 
+    // Longitud mínima de la contraseña (igual que en el servidor)
+    if (password.length < 8) {
+      setError("La contraseña debe tener al menos 8 caracteres.");
+      return;
+    }
+
     // Comprobar coincidencia de contraseñas
     if (password !== confirmarPassword) {
       setError("Las contraseñas no coinciden.");
       return;
     }
 
-    // Pendiente: conectar con Laravel Sanctum
-    console.log({
-      nombre: nombre.trim(),
-      apellidos: apellidos.trim(),
-      correo: correo.trim(),
-    });
+    setEnviando(true);
+
+    try {
+      await registrarse({
+        nombre: nombre.trim(),
+        apellidos: apellidos.trim(),
+        correo: correo.trim(),
+        password,
+        confirmarPassword,
+      });
+      navegar("/");
+    } catch (fallo) {
+      if (fallo instanceof ApiError && fallo.status === 429) {
+        setError("Demasiados intentos. Espera un minuto y vuelve a probar.");
+      } else if (fallo instanceof ApiError && fallo.body?.errors) {
+        // Error de validación del servidor: se muestra el primer mensaje
+        const primerosErrores = Object.values(fallo.body.errors)[0];
+        setError(primerosErrores[0]);
+      } else if (fallo instanceof ApiError) {
+        setError(fallo.message);
+      } else {
+        setError("No se puede conectar con el servidor.");
+      }
+    } finally {
+      setEnviando(false);
+    }
   }
 
   return (
@@ -179,14 +212,14 @@ export function RegisterView() {
           )}
 
           {/* Botón de registro */}
-          <button type="submit" className="login-boton">
-            Crear cuenta
+          <button type="submit" className="login-boton" disabled={enviando}>
+            {enviando ? "Creando cuenta..." : "Crear cuenta"}
           </button>
         </form>
 
         <footer className="login-footer">
           <p>
-            ¿Ya tienes una cuenta? <a href="/login">Inicia sesión</a>
+            ¿Ya tienes una cuenta? <Link to="/login">Inicia sesión</Link>
           </p>
         </footer>
       </section>
