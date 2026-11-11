@@ -189,3 +189,99 @@
 .login-footer a:hover {
   text-decoration: underline;
 }
+
+/* =====================================
+   RESPONSIVE - TABLET
+   769px - 1023px
+===================================== */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .login {
+    padding: 30px 20px;
+  }
+
+  .login-contenedor {
+    max-width: 400px;
+    padding: 32px;
+  }
+
+  .login-header h1 {
+    font-size: 27px;
+  }
+
+  .login-header h2 {
+    font-size: 23px;
+  }
+}
+
+/* =====================================
+   RESPONSIVE - MÓVIL
+   Hasta 768px
+===================================== */
+
+@media (max-width: 768px) {
+  .login {
+    min-height: 100vh;
+    padding: 24px 16px;
+    align-items: flex-start;
+    box-sizing: border-box;
+  }
+
+  .login-contenedor {
+    width: 100%;
+    max-width: 100%;
+    padding: 28px 22px;
+  }
+
+  .login-header {
+    margin-bottom: 26px;
+  }
+
+  .login-header h1 {
+    font-size: 25px;
+    margin-bottom: 22px;
+  }
+
+  .login-header h2 {
+    font-size: 21px;
+  }
+
+  .login-header p {
+    font-size: 13px;
+  }
+
+  .login-formulario {
+    gap: 19px;
+  }
+
+  .login-campo label {
+    font-size: 13px;
+  }
+
+  .login-campo input {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .login-password input {
+    padding-right: 85px;
+  }
+
+  .login-password-toggle {
+    right: 10px;
+    font-size: 12px;
+  }
+
+  .login-boton {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .login-footer {
+    margin-top: 24px;
+  }
+
+  .login-footer p {
+    font-size: 13px;
+  }
+}

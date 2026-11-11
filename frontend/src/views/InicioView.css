@@ -187,3 +187,120 @@
   outline: 2px solid var(--azul-4);
   outline-offset: 3px;
 }
+
+/* =====================================
+   RESPONSIVE - TABLET
+   769px - 1023px
+===================================== */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  /* HEADER */
+
+  .inicio-header {
+    padding: 0 20px;
+  }
+
+  .inicio-logo img {
+    height: 58px;
+  }
+
+  /* CONTENIDO */
+
+  .inicio {
+    padding: 24px 20px;
+  }
+
+  /* TABLAS */
+
+  .tabla-contenedor {
+    overflow-x: auto;
+  }
+
+  .tabla-contenedor table {
+    min-width: 650px;
+  }
+
+  .tabla-contenedor th,
+  .tabla-contenedor td {
+    padding: 9px 10px;
+  }
+}
+
+/* =====================================
+   RESPONSIVE - MÓVIL
+   Hasta 768px
+===================================== */
+
+@media (max-width: 768px) {
+  /* HEADER */
+
+  .inicio-header {
+    height: auto;
+    min-height: 70px;
+    padding: 10px 16px;
+    gap: 12px;
+  }
+
+  .inicio-logo img {
+    height: 48px;
+    max-width: 125px;
+  }
+
+  .inicio-accesos {
+    gap: 8px;
+  }
+
+  .inicio-accesos a {
+    padding: 9px 11px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  /* CONTENIDO */
+
+  .inicio {
+    padding: 20px 16px;
+  }
+
+  .inicio-bloque {
+    margin-bottom: 30px;
+  }
+
+  .inicio-bloque h2 {
+    font-size: 18px;
+  }
+
+  /* TABLAS */
+
+  .tabla-contenedor {
+    max-height: 360px;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  .tabla-contenedor table {
+    min-width: 650px;
+  }
+
+  .tabla-contenedor th,
+  .tabla-contenedor td {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .titulo-charla {
+    font-size: 14px;
+  }
+
+  .resumen-charla {
+    font-size: 13px;
+  }
+
+  .etiqueta-rama {
+    font-size: 11px;
+  }
+
+  .inicio-mensaje {
+    padding: 30px 16px;
+  }
+}
