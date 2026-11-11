@@ -285,41 +285,58 @@
   }
 
   /* Tabla de charlas: cuatro columnas iguales */
-
   .tabla-contenedor.tabla-charlas table {
     width: 100%;
     min-width: 0;
     table-layout: fixed;
   }
 
-  /* Distribución uniforme */
+  /* Distribución de columnas */
 
-  .tabla-contenedor.tabla-charlas th,
-  .tabla-contenedor.tabla-charlas td {
-    width: 25%;
-    padding: 8px 6px;
-    font-size: 12px;
-    text-align: left;
-    vertical-align: top;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+  .tabla-contenedor.tabla-charlas th:nth-child(1),
+  .tabla-contenedor.tabla-charlas td:nth-child(1) {
+    width: 40%;
+  }
+
+  .tabla-contenedor.tabla-charlas th:nth-child(2),
+  .tabla-contenedor.tabla-charlas td:nth-child(2) {
+    width: 23%;
+  }
+
+  .tabla-contenedor.tabla-charlas th:nth-child(3),
+  .tabla-contenedor.tabla-charlas td:nth-child(3) {
+    width: 13%;
+  }
+
+  .tabla-contenedor.tabla-charlas th:nth-child(4),
+  .tabla-contenedor.tabla-charlas td:nth-child(4) {
+    width: 24%;
   }
 
   /* Ajustes de contenido */
 
+  .tabla-contenedor.tabla-charlas th,
+  .tabla-contenedor.tabla-charlas td {
+    padding: 8px 5px;
+    font-size: 11px;
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
   .titulo-charla {
     font-size: 13px;
-    overflow-wrap: anywhere;
   }
 
   .resumen-charla {
     font-size: 11px;
-    overflow-wrap: anywhere;
-  }
-  .etiqueta-rama {
-    font-size: 11px;
   }
 
+  .etiqueta-rama {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
   .inicio-mensaje {
     padding: 30px 16px;
   }
