@@ -1,3 +1,95 @@
+/* -------------------------
+   VARIABLES DE COLOR
+------------------------- */
+
+.inicio-pagina {
+  --azul-1: #1664c2;
+  --azul-2: #1d86c7;
+  --azul-3: #2aa8cb;
+  --azul-4: #42c5cd;
+  --azul-oscuro: #073b63;
+  --texto: #173f61;
+  --fondo: #f4f9fc;
+  --blanco: #ffffff;
+}
+
+/* -------------------------
+   HEADER
+------------------------- */
+
+.inicio-header {
+  max-width: 1100px;
+  height: 80px;
+  margin: 0 auto;
+  padding: 0 24px;
+  background-color: var(--fondo);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid #dce7ee;
+  box-sizing: border-box;
+}
+
+.inicio-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.inicio-logo img {
+  height: 65px;
+  max-width: 180px;
+  object-fit: contain;
+}
+
+.inicio-accesos {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.inicio-accesos a {
+  padding: 10px 20px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* Botón iniciar sesión */
+
+.inicio-boton-login {
+  color: var(--azul-1);
+  background-color: transparent;
+  border: 1px solid var(--azul-1);
+}
+
+.inicio-boton-login:hover {
+  color: var(--blanco);
+  background-color: var(--azul-1);
+}
+
+/* Botón crear cuenta */
+
+.inicio-boton-registro {
+  color: var(--blanco);
+  background-color: var(--azul-1);
+  border: 1px solid var(--azul-1);
+}
+
+.inicio-boton-registro:hover {
+  background-color: var(--azul-oscuro);
+  border-color: var(--azul-oscuro);
+}
+
+/* -------------------------
+   CONTENIDO PRINCIPAL
+------------------------- */
+
 .inicio {
   max-width: 1100px;
   margin: 0 auto;
@@ -9,14 +101,24 @@
   margin-bottom: 40px;
 }
 
+.inicio-bloque h2 {
+  color: var(--azul-oscuro);
+}
+
 .inicio-mensaje {
   text-align: center;
   padding: 40px;
+  color: var(--texto);
 }
+
+/* -------------------------
+   CHARLAS
+------------------------- */
 
 .etiqueta-rama {
   font-size: 12px;
-  border: 1px solid currentColor;
+  color: var(--azul-1);
+  border: 1px solid var(--azul-3);
   border-radius: 999px;
   padding: 2px 10px;
 }
@@ -24,23 +126,31 @@
 .titulo-charla {
   display: block;
   margin: 8px 0 4px;
+  color: var(--azul-oscuro);
 }
 
 .resumen-charla {
   margin: 0;
   font-size: 14px;
   opacity: 0.8;
+  color: var(--texto);
 }
+
+/* -------------------------
+   TABLAS
+------------------------- */
 
 .tabla-contenedor.tabla-charlas {
   max-height: none;
+  background-color: var(--fondo);
 }
 
 .tabla-contenedor {
   max-height: 360px;
   overflow-y: auto;
-  border: 1px solid #8884;
+  border: 1px solid #dce7ee;
   border-radius: 8px;
+  background-color: var(--blanco);
 }
 
 .tabla-contenedor table {
@@ -52,6 +162,28 @@
 .tabla-contenedor td {
   padding: 8px 12px;
   text-align: left;
-  border-bottom: 1px solid #8883;
+  border-bottom: 1px solid #dce7ee;
   vertical-align: top;
+}
+
+.tabla-contenedor th {
+  color: var(--azul-oscuro);
+  background-color: #eaf4fa;
+}
+
+.tabla-contenedor td {
+  color: var(--texto);
+}
+
+.tabla-contenedor tbody tr:hover {
+  background-color: #f0f8fc;
+}
+
+/* -------------------------
+   BOTONES: ACCESIBILIDAD
+------------------------- */
+
+.inicio-accesos a:focus-visible {
+  outline: 2px solid var(--azul-4);
+  outline-offset: 3px;
 }
