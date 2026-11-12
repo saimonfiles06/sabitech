@@ -1,7 +1,7 @@
 import { ApiError } from "./ApiError.js";
 import { User } from "../models/User.js";
 
-const API_BASE_URL = "http://localhost:8080/api/";
+const API_BASE_URL = "/api/";
 
 // Función interna: prepara y envía una petición a la API
 async function enviar(ruta, { metodo = "GET", cuerpo = null, token = null } = {}) {

@@ -2,7 +2,7 @@ import { Reserva } from "../models/Reserva.js";
 import { ApiError } from "./ApiError.js";
 import { Page } from "../models/Page.js";
 
-const API_BASE_URL = "http://localhost:8080/api/";
+const API_BASE_URL = "/api/";
 const RESERVAS_URL = `${API_BASE_URL}reservas`;
 
 export async function list() {

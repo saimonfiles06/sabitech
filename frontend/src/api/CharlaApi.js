@@ -1,7 +1,7 @@
 import { Charla } from "../models/Charla.js";
 import { ApiError } from "./ApiError.js";
 
-const API_BASE_URL = "http://localhost:8080/api/";
+const API_BASE_URL = "/api/";
 const CHARLAS_URL = `${API_BASE_URL}charlas`;
 
 export async function list() {

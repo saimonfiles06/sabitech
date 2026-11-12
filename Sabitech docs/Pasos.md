@@ -50,3 +50,36 @@ Actualizar el repositorio y después en el directorio de Backend ejecutar...
 docker compose exec web composer install
 docker compose exec web php artisan migrate
 ```
+
+## Levantar tercer contenedor y vista en movil
+
+**Primeros pasos**
+- Por supuesto bajar el repositorio.
+- Tener Docker abierto y tener los contenedores parados.
+- Desde la carpeta backend ejecutar ```   docker compose up -d --build```
+
+A partir de tener esto en funcionamiento ya no hay que ejecutar en consola el **npm run dev** para ver el front y tampoco hay que hacer el **npm install**
+
+**Ver la pagina en el movi**
+- Lo primero estar conectado con ordenador y movil en la misma red wifi.
+- Luego averiguar la ip del ordenador
+	- En win creo que era **ip addr**
+	- En Mac es con **ipconfig getifaddr en0**
+- Luego en el movil entrar a `http://IP_DEL_ORDENADOR:5173`
+
+### Si no carga desde el móvil
+
+| Síntoma                                 | Qué mirar                                                                                                                                                                                                                                                    |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| No carga nada                           | ¿Mac y móvil están en la **misma wifi**? Las redes de invitados, de empresas y de centros educativos suelen aislar los dispositivos entre sí; en ese caso no hay forma de que funcione, y hay que usar la wifi de casa o compartir internet del móvil al Mac |
+| No carga y la wifi es correcta          | Cortafuegos de macOS: puede haber preguntado si permite conexiones entrantes a Docker y hay que aceptar (Ajustes del Sistema → Red → Cortafuegos)                                                                                                            |
+| Sigue sin cargar                        | `docker compose ps` debe mostrar `0.0.0.0:5173->5173/tcp`. Si muestra `127.0.0.1`, el puerto sigue cerrado: Despues de la tabla se ve como solucionarlo.                                                                                                     |
+| Funcionaba y deja de funcionar          | La IP del Mac cambia al reiniciar el router o cambiar de red: repite el comando de la IP                                                                                                                                                                     |
+| La web carga pero faltan los datos      | La API se está llamando con `localhost`: revisa que los 5 ficheros del paso 4 usan `"/api/"`                                                                                                                                                                 |
+| Los cambios de código no se ven         | `docker compose restart frontend`                                                                                                                                                                                                                            |
+| Error de que el puerto 5173 está en uso | Hay un `npm run dev` abierto en otro terminal: páralo con Ctrl+C                                                                                                                                                                                             |
+
+En el caso que `docker compose ps apunte a 127.0.0.1, ejecutar esta linea en terminal
+```bash
+IP_FRONTEND=0.0.0.0 docker compose up -d frontend
+```
