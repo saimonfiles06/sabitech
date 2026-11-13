@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('titulo', 80);
             $table->enum('rama', ['Salud', 'Business', 'Tech']);
             $table->foreignId('ponente_id')->constrained('usuarios');
+            $table->foreignId('supervisor_id')->constrained('usuarios');
             $table->string('resumen_contenido')->nullable();
             $table->text('contenido'); // Se configura como text para que pueda contener más de 255 caracteres
             $table->string('url_imagen')->nullable();
@@ -27,7 +28,7 @@ return new class extends Migration
             //Campo estado para indicar si la charla está
             // activa, en edición, finalizada o cancelada,
             // por defecto será activa
-            $table->enum('estado', ['activa', 'en_edicion', 'finalizada', 'cancelada'])->default('activa');
+            $table->enum('estado', ['activa', 'en_edicion', 'finalizada', 'cancelada'])->default('en_edicion');
             $table->timestamps();
         });
     }

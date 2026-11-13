@@ -1,33 +1,39 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class CharlaController extends Controller
 {
+    //Listado charlas para rol administrador (todos los datos)
     public function index(): JsonResponse
     {
         $charlas = DB::table('charlas')
-        ->join('usuarios', 'charlas.ponente_id', '=', 'usuarios.id')
-        ->join('salas', 'charlas.sala_id', '=', 'salas.id')
-        ->select(
-            'charlas.id',
-            'charlas.titulo',
-            'charlas.rama',
-            'usuarios.nombre AS nombre_ponente',
-            'usuarios.apellidos AS apellidos_ponente',
-            'charlas.resumen_contenido',
-            'charlas.contenido',
-            'charlas.url_imagen',
-            'salas.nombre AS nombre_sala',
-            'charlas.fecha_hora_charla',
-            'charlas.fecha_hora_entrada',
-            'charlas.fecha_hora_fin',
-        )
+            ->join('usuarios', 'charlas.ponente_id', '=', 'usuarios.id')
+            ->join('usuarios', 'charlas.supervisor_id', '=', 'usuarios.id')
+            ->join('salas', 'charlas.sala_id', '=', 'salas.id')
+            ->select(
+                'charlas.id',
+                'charlas.titulo',
+                'charlas.rama',
+                'usuarios.nombre AS nombre_ponente',
+                'usuarios.apellidos AS apellidos_ponente',
+                'usuarios.nombre AS nombre_supervisor',
+                'usuarios.apellidos AS apellidos_supervisor',
+                'charlas.resumen_contenido',
+                'charlas.contenido',
+                'charlas.url_imagen',
+                'salas.nombre AS nombre_sala',
+                'charlas.fecha_hora_charla',
+                'charlas.fecha_hora_entrada',
+                'charlas.fecha_hora_fin',
+            )
 
-        ->orderBy('charlas.id')
-        ->get();
+            ->orderBy('charlas.id')
+            ->get();
 
         return response()->json($charlas, 200);
 
@@ -44,5 +50,14 @@ class CharlaController extends Controller
         // fecha_charla
         // hora_entrada
         // hora_fin
+    }
+    //Obtener charla por id
+    public function idCharla(Request $idCharla): JsonResponse
+    {
+        $charlas = DB::table('charlas')->select('id')->where('id', $idCharla)->get();
+        if ($charlas) {
+            return response()->json($charlas->id, 200);
+        }
+        return response()->json('Charla no encontrada', 404);
     }
 }
