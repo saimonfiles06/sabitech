@@ -18,5 +18,6 @@ Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:10
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/perfil', [AuthController::class, 'perfil']);
+    Route::get('/perfil/{id}', [UsuarioController::class, 'idUsuario']);
     Route::get('/reservas', [ReservaController::class, 'index']);
 });
