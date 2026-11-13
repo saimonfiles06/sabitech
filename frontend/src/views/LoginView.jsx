@@ -97,10 +97,6 @@ export function LoginView() {
               >
                 {mostrarPassword ? "Ocultar" : "Mostrar"}
               </button>
-
-              <button type="submit" className="login-boton" disabled={enviando}>
-                {enviando ? "Entrando..." : "Iniciar sesión"}
-              </button>
             </div>
           </div>
 
@@ -110,14 +106,15 @@ export function LoginView() {
             </p>
           )}
 
-          <button type="submit" className="login-boton">
-            Iniciar sesión
+          <button type="submit" className="login-boton" disabled={enviando}>
+            {enviando ? "Entrando..." : "Iniciar sesión"}
           </button>
         </form>
 
         <footer className="login-footer">
           <p>
-            ¿Todavía no tienes una cuenta? <Link to="/registro">Regístrate</Link>
+            ¿Todavía no tienes una cuenta?{" "}
+            <Link to="/registro">Regístrate</Link>
           </p>
         </footer>
       </section>
