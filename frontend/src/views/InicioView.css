@@ -85,7 +85,36 @@
   background-color: var(--azul-oscuro);
   border-color: var(--azul-oscuro);
 }
+/* Botón mi perfil */
 
+.inicio-boton-perfil {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 18px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--blanco);
+  background-color: var(--azul-1);
+  border: 1px solid var(--azul-1);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.inicio-boton-perfil:hover {
+  color: var(--blanco);
+  background-color: var(--azul-oscuro);
+  border-color: var(--azul-oscuro);
+}
+
+.inicio-boton-perfil:focus-visible {
+  outline: 2px solid var(--azul-4);
+  outline-offset: 3px;
+}
 /* -------------------------
    CONTENIDO PRINCIPAL
 ------------------------- */
@@ -198,18 +227,34 @@
 
   .inicio-header {
     padding: 0 20px;
+    gap: 12px;
   }
 
   .inicio-logo img {
     height: 58px;
   }
 
+  .inicio-accesos {
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+
+  .inicio-accesos span {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .inicio-boton-perfil,
+  .inicio-boton-login {
+    padding: 9px 13px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
   /* CONTENIDO */
 
   .inicio {
     padding: 24px 20px;
   }
-
   /* TABLAS */
 
   .tabla-contenedor {
@@ -245,9 +290,14 @@
     height: 48px;
     max-width: 125px;
   }
+  .inicio-boton-perfil {
+    padding: 9px 11px;
+    font-size: 12px;
+    gap: 5px;
+  }
 
   .inicio-accesos {
-    gap: 8px;
+    gap: 7px;
   }
 
   .inicio-accesos a {
@@ -275,7 +325,6 @@
   .inicio-bloque h2 {
     font-size: 18px;
   }
-
   /* TABLAS */
 
   .tabla-contenedor {
