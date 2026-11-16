@@ -12,17 +12,17 @@ class CharlaController extends Controller
     public function index(): JsonResponse
     {
         $charlas = DB::table('charlas')
-            ->join('usuarios', 'charlas.ponente_id', '=', 'usuarios.id')
-            ->join('usuarios', 'charlas.supervisor_id', '=', 'usuarios.id')
+            ->join('usuarios AS ponentes', 'charlas.ponente_id', '=', 'ponente.id')
+            ->join('usuarios AS supervisor', 'charlas.supervisor_id', '=', 'supervisor.id')
             ->join('salas', 'charlas.sala_id', '=', 'salas.id')
             ->select(
                 'charlas.id',
                 'charlas.titulo',
                 'charlas.rama',
-                'usuarios.nombre AS nombre_ponente',
-                'usuarios.apellidos AS apellidos_ponente',
-                'usuarios.nombre AS nombre_supervisor',
-                'usuarios.apellidos AS apellidos_supervisor',
+                'ponente.nombre AS nombre_ponente',
+                'ponente.apellidos AS apellidos_ponente',
+                'supervisor.nombre AS nombre_supervisor',
+                'supervisor.apellidos AS apellidos_supervisor',
                 'charlas.resumen_contenido',
                 'charlas.contenido',
                 'charlas.url_imagen',
@@ -44,7 +44,10 @@ class CharlaController extends Controller
         // rama
         // nombre_ponente
         // apellidos_ponente
+        // nombre_supervisor
+        // apellidos_supervisor
         // resumen_contenido
+        // contenido
         // url_imagen
         // nombre_sala
         // fecha_charla
