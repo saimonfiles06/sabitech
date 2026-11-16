@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { list as listarCharlas } from "../api/CharlaApi.js";
-import { list as listarUsuarios } from "../api/UsuarioApi.js";
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth/ContextoAuth.jsx";
 import "./InicioView.css";
@@ -23,7 +22,6 @@ function formatearFecha(texto) {
 
 export function InicioView() {
   const [charlas, setCharlas] = useState([]);
-  const [usuarios, setUsuarios] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
   const { usuario, cerrarSesion } = useAuth();
@@ -32,13 +30,9 @@ export function InicioView() {
     async function cargarDatos() {
       try {
         // Las dos peticiones se lanzan a la vez
-        const [listaCharlas, listaUsuarios] = await Promise.all([
-          listarCharlas(),
-          listarUsuarios(),
-        ]);
+        const [listaCharlas] = await Promise.all([listarCharlas()]);
 
         setCharlas(listaCharlas);
-        setUsuarios(listaUsuarios);
       } catch (e) {
         setError("No se han podido cargar los datos.");
         console.error(e);

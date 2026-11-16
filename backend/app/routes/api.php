@@ -8,7 +8,6 @@ use App\Http\Controllers\AuthController;
 
 // Rutas públicas
 Route::get('/charlas', [CharlaController::class, 'index']);
-Route::get('/usuarios', [UsuarioController::class, 'index']);
 
 // Autentificación: con límite de 10 intentos por minuto
 Route::post('/registro', [AuthController::class, 'registro'])->middleware('throttle:10,1');
@@ -18,6 +17,7 @@ Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:10
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/perfil', [AuthController::class, 'perfil']);
+    Route::get('/usuarios', [UsuarioController::class, 'index']);
     Route::get('/perfil/{id}', [UsuarioController::class, 'idUsuario']);
     Route::get('/reservas', [ReservaController::class, 'index']);
     Route::get('/perfil/{id}/reservas', [UsuarioController::class, 'reservasUsuario']);
