@@ -99,6 +99,7 @@
   color: var(--blanco);
   background-color: var(--azul-1);
   border: 1px solid var(--azul-1);
+  gap: 8px;
 }
 
 .perfil-boton-principal:hover {
@@ -113,6 +114,7 @@
   color: var(--azul-1);
   background-color: transparent;
   border: 1px solid var(--azul-1);
+  gap: 8px;
 }
 
 .perfil-boton-secundario:hover {
