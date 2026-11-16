@@ -4,6 +4,7 @@ import { list as listarUsuarios } from "../api/UsuarioApi.js";
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth/ContextoAuth.jsx";
 import "./InicioView.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import logoTexto from "../assets/img/logo_texto.ico";
 
 /** "2026-12-01 09:30:00" -> "1 dic, 09:30" */
@@ -61,6 +62,11 @@ export function InicioView() {
           {usuario ? (
             <>
               <span>Hola, {usuario.nombre}</span>
+
+              <Link to="/perfil" className="inicio-boton-perfil">
+                <i className="bi bi-person-circle"></i>
+                Mi perfil
+              </Link>
 
               <button
                 type="button"
