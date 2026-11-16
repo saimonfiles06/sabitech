@@ -57,7 +57,7 @@ export function InicioView() {
             <>
               <span>Hola, {usuario.nombre}</span>
 
-              <Link to="/perfil" className="inicio-boton-perfil">
+              <Link to="/perfil/{id}" className="inicio-boton-perfil">
                 <i className="bi bi-person-circle"></i>
                 Mi perfil
               </Link>

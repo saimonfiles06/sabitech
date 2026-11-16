@@ -18,7 +18,6 @@
 ------------------------- */
 
 .inicio-header {
-  max-width: auto;
   height: 80px;
   margin: 0 auto;
   padding: 0 24px;
@@ -26,7 +25,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   border-bottom: 1px solid #dce7ee;
   box-sizing: border-box;
 }
@@ -82,21 +80,14 @@
 }
 
 .inicio-boton-registro:hover {
+  color: var(--blanco);
   background-color: var(--azul-oscuro);
   border-color: var(--azul-oscuro);
 }
+
 /* Botón mi perfil */
 
 .inicio-boton-perfil {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  padding: 10px 18px;
-  border-radius: 7px;
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
   color: var(--blanco);
   background-color: var(--azul-1);
   border: 1px solid var(--azul-1);
@@ -111,10 +102,28 @@
   border-color: var(--azul-oscuro);
 }
 
-.inicio-boton-perfil:focus-visible {
-  outline: 2px solid var(--azul-4);
-  outline-offset: 3px;
+/* Dimensiones comunes: Mi perfil y Cerrar sesión */
+
+.inicio-boton-perfil,
+.inicio-accesos button.inicio-boton-login {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 125px;
+  min-width: 125px;
+  height: 40px;
+  padding: 10px 12px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
 }
+
 /* -------------------------
    CONTENIDO PRINCIPAL
 ------------------------- */
@@ -209,10 +218,11 @@
 }
 
 /* -------------------------
-   BOTONES: ACCESIBILIDAD
+   ACCESIBILIDAD
 ------------------------- */
 
-.inicio-accesos a:focus-visible {
+.inicio-accesos a:focus-visible,
+.inicio-accesos button:focus-visible {
   outline: 2px solid var(--azul-4);
   outline-offset: 3px;
 }
@@ -244,17 +254,23 @@
     white-space: nowrap;
   }
 
+  /* Botones de perfil y cerrar sesión */
+
   .inicio-boton-perfil,
-  .inicio-boton-login {
-    padding: 9px 13px;
+  .inicio-accesos button.inicio-boton-login {
+    width: 115px;
+    min-width: 115px;
+    height: 38px;
+    padding: 9px 10px;
     font-size: 13px;
-    white-space: nowrap;
   }
+
   /* CONTENIDO */
 
   .inicio {
     padding: 24px 20px;
   }
+
   /* TABLAS */
 
   .tabla-contenedor {
@@ -290,11 +306,6 @@
     height: 48px;
     max-width: 125px;
   }
-  .inicio-boton-perfil {
-    padding: 9px 11px;
-    font-size: 12px;
-    gap: 5px;
-  }
 
   .inicio-accesos {
     gap: 7px;
@@ -304,6 +315,21 @@
     padding: 9px 11px;
     font-size: 12px;
     text-align: center;
+  }
+
+  /* Botones de perfil y cerrar sesión */
+
+  .inicio-boton-perfil,
+  .inicio-accesos button.inicio-boton-login {
+    width: auto;
+    min-width: 0;
+    height: 36px;
+    padding: 9px 11px;
+    font-size: 12px;
+  }
+
+  .inicio-boton-perfil {
+    gap: 5px;
   }
 
   /* Ocultar botón crear cuenta */
@@ -325,6 +351,7 @@
   .inicio-bloque h2 {
     font-size: 18px;
   }
+
   /* TABLAS */
 
   .tabla-contenedor {
@@ -333,7 +360,8 @@
     overflow-y: auto;
   }
 
-  /* Tabla de charlas: cuatro columnas iguales */
+  /* Tabla de charlas */
+
   .tabla-contenedor.tabla-charlas table {
     width: 100%;
     min-width: 0;
@@ -386,6 +414,7 @@
     font-size: 10px;
     padding: 2px 6px;
   }
+
   .inicio-mensaje {
     padding: 30px 16px;
   }
