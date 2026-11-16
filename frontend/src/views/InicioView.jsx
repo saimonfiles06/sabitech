@@ -4,7 +4,7 @@ import { list as listarUsuarios } from "../api/UsuarioApi.js";
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth/ContextoAuth.jsx";
 import "./InicioView.css";
-import "../assets/img/logo_texto.ico";
+import logoTexto from "../assets/img/logo_texto.ico";
 
 /** "2026-12-01 09:30:00" -> "1 dic, 09:30" */
 function formatearFecha(texto) {
@@ -54,7 +54,7 @@ export function InicioView() {
       {/* HEADER */}
       <header className="inicio-header">
         <a href="/" className="inicio-logo">
-          <img src="../assets/img/logo_texto.ico" alt="SABITECH" />
+          <img src={logoTexto} alt="Logo Sabitech" />
         </a>
 
         <nav className="inicio-accesos">
@@ -133,35 +133,6 @@ export function InicioView() {
                           {" – "}
                           {formatearFecha(charla.fecha_hora_fin)}
                         </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </section>
-
-            {/* USUARIOS */}
-            <section className="inicio-bloque">
-              <h2>Usuarios ({usuarios.length})</h2>
-
-              <div className="tabla-contenedor">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Correo</th>
-                      <th>Rol</th>
-                      <th>Alta</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    {usuarios.map((usuario) => (
-                      <tr key={usuario.id}>
-                        <td>{usuario.nombreCompleto}</td>
-                        <td>{usuario.correo}</td>
-                        <td>{usuario.rol}</td>
-                        <td>{formatearFecha(usuario.fecha_alta)}</td>
                       </tr>
                     ))}
                   </tbody>
