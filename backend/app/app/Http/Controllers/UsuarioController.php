@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
+    // Muestra listado de todos
     public function index(Request $request): JsonResponse
     {
         $usuarioActual = $request->user();
@@ -33,7 +34,7 @@ class UsuarioController extends Controller
     }
 
 
-
+    // Manda los datos del usuario {id}
     public function idUsuario(Request $request, int $idUsuario): JsonResponse
     {
         $usuarioActual = $request->user();
@@ -52,35 +53,52 @@ class UsuarioController extends Controller
             $usuario = DB::table('usuarios')
                 ->select($columnas)
                 ->where('id', $idUsuario)
-                ->get();
+                ->first();
 
             if ($usuario === null) {
-                return response()->json(['message' => 'Usuario no encontrado.'], 403);
+                return response()->json(['message' => 'Usuario no encontrado.'], 404);
             }
 
             return response()->json($usuario, 200);
         }
 
         //Si no eres el usuario o administrador, no muestra nada.
-        return response()->json(['message' => 'No tienes permisos para esta acción.'], 404);
+        return response()->json(['message' => 'No tienes permisos para esta acción.'], 403);
     }
 
+    
     public function reservasUsuario(Request $request, int $idUsuario): JsonResponse
     {
         $usuarioActual = $request->user();
 
-        //Datos comunes a mostrar
-        $columnas = ['id', 'usuario_id', 'charla_id', 'estado', 'correo_enviado_en', 'hora_entrada', 'created_at'];
-        
         //Muestra si eres el user o admin
         if ($usuarioActual->id === $idUsuario || $usuarioActual->rol === 'administrador') {
 
-            $lista = DB::table('reservas')
-                ->select($columnas)
+            $reservas = DB::table('reservas')
+                ->join('charlas', 'reserva.charla_id', '=', 'charlas.id')
+                ->join('salas', 'charlas.sala_id', '=', 'sala_id')
+                ->join('usuarios AS ponente', 'ponente_id', '=', 'charlas.ponente_id')
+                ->join('usuarios AS supervisor', 'supervisor_id', '=', 'charlas.supervisor_id')
+                ->select(
+                'charlas.id',
+                'charlas.titulo',
+                'charlas.rama',
+                'ponente.nombre AS nombre_ponente',
+                'ponente.apellidos AS apellidos_ponente',
+                'supervisor.nombre AS nombre_supervisor',
+                'supervisor.apellidos AS apellidos_supervisor',
+                'charlas.resumen_contenido',
+                'charlas.contenido',
+                'charlas.url_imagen',
+                'salas.nombre AS nombre_sala',
+                'charlas.fecha_hora_charla',
+                'charlas.fecha_hora_entrada',
+                'charlas.fecha_hora_fin',
+                )
                 ->where('usuario_id', $idUsuario)
                 ->get();
 
-                        return response()->json($lista, 200);
+                        return response()->json($reservas, 200);
         }
 
         //Si no eres el usuario o administrador, no muestra nada.

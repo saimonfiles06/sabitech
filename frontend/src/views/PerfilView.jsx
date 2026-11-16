@@ -72,10 +72,10 @@ function PerfilView() {
             </span>
           </div>
 
-          <div className="perfil-dato">
+          {/* <div className="perfil-dato">
             <span className="perfil-etiqueta">Rol</span>
             <span className="perfil-rol">{usuario.rol || "Usuario"}</span>
-          </div>
+          </div> */}
 
           <div className="perfil-dato">
             <span className="perfil-etiqueta">Fecha de alta</span>

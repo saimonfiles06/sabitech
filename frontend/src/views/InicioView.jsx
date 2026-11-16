@@ -24,7 +24,7 @@ export function InicioView() {
   const [charlas, setCharlas] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
-  const { usuario, cerrarSesion } = useAuth();
+  const { usuario } = useAuth();
 
   useEffect(() => {
     async function cargarDatos() {
@@ -57,7 +57,7 @@ export function InicioView() {
             <>
               <span>Hola, {usuario.nombre}</span>
 
-              <Link to="/perfil/{id}" className="inicio-boton-perfil">
+              <Link to="/perfil" className="inicio-boton-perfil">
                 <i className="bi bi-person-circle"></i>
                 Mi perfil
               </Link>

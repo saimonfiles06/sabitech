@@ -10,7 +10,7 @@ function App() {
       <Route path="/" element={<InicioView />} />
       <Route path="/login" element={<LoginView />} />
       <Route path="/registro" element={<RegisterView />} />
-      <Route path="/perfil/{id}" element={<PerfilView />} />
+      <Route path="/perfil" element={<PerfilView />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
