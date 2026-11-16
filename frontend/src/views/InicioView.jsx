@@ -61,14 +61,6 @@ export function InicioView() {
                 <i className="bi bi-person-circle"></i>
                 Mi perfil
               </Link>
-
-              <button
-                type="button"
-                className="inicio-boton-login"
-                onClick={cerrarSesion}
-              >
-                Cerrar sesión
-              </button>
             </>
           ) : (
             <>

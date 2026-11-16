@@ -94,6 +94,7 @@
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease;
+  gap: 8px;
 }
 
 .inicio-boton-perfil:hover {
@@ -105,7 +106,7 @@
 /* Dimensiones comunes: Mi perfil y Cerrar sesión */
 
 .inicio-boton-perfil,
-.inicio-accesos button.inicio-boton-login {
+.inicio-boton-login {
   display: inline-flex;
   align-items: center;
   justify-content: center;
