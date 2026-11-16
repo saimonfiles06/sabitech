@@ -12,7 +12,7 @@ class CharlaController extends Controller
     public function index(): JsonResponse
     {
         $charlas = DB::table('charlas')
-            ->join('usuarios AS ponentes', 'charlas.ponente_id', '=', 'ponente.id')
+            ->join('usuarios AS ponente', 'charlas.ponente_id', '=', 'ponente.id')
             ->join('usuarios AS supervisor', 'charlas.supervisor_id', '=', 'supervisor.id')
             ->join('salas', 'charlas.sala_id', '=', 'salas.id')
             ->select(

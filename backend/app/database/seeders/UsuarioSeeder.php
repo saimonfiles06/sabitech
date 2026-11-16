@@ -21,6 +21,9 @@ class UsuarioSeeder extends Seeder
         $usuarios[] = $this->fila('Admin', 'Sabitech', 'admin@correo.es', 'administrador');
         $usuarios[] = $this->fila('Ponente', 'Pruebas', 'ponente@correo.es', 'ponente');
         $usuarios[] = $this->fila('Usuario', 'Pruebas', 'usuario@correo.es', 'usuario');
+        $usuarios[] = $this->fila('Supervisor', 'Uno', 'supervisor1@correo.es', 'supervisor');
+        $usuarios[] = $this->fila('Supervisor', 'Dos', 'supervisor2@correo.es', 'supervisor');
+        $usuarios[] = $this->fila('Supervisor', 'Tres', 'supervisor3@correo.es', 'supervisor');
 
         // 9 ponentes más (10 en total)
         for ($i = 0; $i < 9; $i++) {

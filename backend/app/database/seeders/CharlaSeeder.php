@@ -10,8 +10,9 @@ class CharlaSeeder extends Seeder
 {
     public function run(): void
     {
-        // Ids de los 10 ponentes y de las 5 salas, en orden de creación
-        $ponentes = DB::table('usuarios')->where('rol', 'ponente')->orderBy('id')->pluck('id');
+        // Ids de los 10 ponentes, los 3 supervisores y las 5 salas, en orden de creación
+        $ponentes     = DB::table('usuarios')->where('rol', 'ponente')->orderBy('id')->pluck('id');
+        $supervisores = DB::table('usuarios')->where('rol', 'supervisor')->orderBy('id')->pluck('id');
         $salas    = DB::table('salas')->orderBy('id')->pluck('id');
 
         // Días de las jornadas
@@ -137,9 +138,12 @@ class CharlaSeeder extends Seeder
                 'titulo'             => $charla['titulo'],
                 'rama'               => $charla['rama'],
                 'ponente_id'         => $ponentes[$indice],
+                // Reparto rotatorio: charla 0 → supervisor 0, charla 1 → supervisor 1, ...
+                'supervisor_id'      => $supervisores[$indice % count($supervisores)],
                 'resumen_contenido'  => $charla['resumen_contenido'],
                 'contenido'          => $charla['contenido'],
                 'url_imagen'         => null,
+                'estado'             => 'activa',
                 'sala_id'            => $salaId,
                 'fecha_hora_charla'  => $inicio,
                 'fecha_hora_entrada' => $inicio->subMinutes(15),
