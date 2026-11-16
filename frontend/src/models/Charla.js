@@ -5,6 +5,8 @@ export class Charla {
     rama = "",
     nombre_ponente = "",
     apellidos_ponente = "",
+    nombre_supervisor = "",
+    apellidos_supervisor = "",
     resumen_contenido = "",
     contenido = "",
     url_imagen = "XtartLogo",
@@ -19,6 +21,8 @@ export class Charla {
     this.rama = rama;
     this.nombre_ponente = nombre_ponente;
     this.apellidos_ponente = apellidos_ponente;
+    this.nombre_supervisor = nombre_supervisor;
+    this.apellidos_supervisor = apellidos_supervisor;
     this.resumen_contenido = resumen_contenido;
     this.contenido = contenido;
     this.url_imagen = url_imagen;
@@ -36,6 +40,8 @@ export class Charla {
       rama: json.rama,
       nombre_ponente: json.nombre_ponente,
       apellidos_ponente: json.apellidos_ponente,
+      nombre_supervisor: json.nombre_supervisor,
+      apellidos_supervisor: json.apellidos_supervisor,
       resumen_contenido: json.resumen_contenido,
       contenido: json.contenido,
       // Si la charla no tiene imagen la API manda null: se usa el logo por defecto
@@ -55,6 +61,8 @@ export class Charla {
       rama: this.rama,
       nombre_ponente: this.nombre_ponente,
       apellidos_ponente: this.apellidos_ponente,
+      nombre_supervisor: this.nombre_supervisor,
+      apellidos_supervisor: this.apellidos_supervisor,
       resumen_contenido: this.resumen_contenido,
       contenido: this.contenido,
       url_imagen: this.url_imagen,

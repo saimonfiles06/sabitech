@@ -4,6 +4,7 @@ import { list as listarUsuarios } from "../api/UsuarioApi.js";
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth/ContextoAuth.jsx";
 import "./InicioView.css";
+import "../assets/img/logo_texto.ico";
 
 /** "2026-12-01 09:30:00" -> "1 dic, 09:30" */
 function formatearFecha(texto) {
@@ -53,7 +54,7 @@ export function InicioView() {
       {/* HEADER */}
       <header className="inicio-header">
         <a href="/" className="inicio-logo">
-          <img src="/assets/img/logo_texto.ico" alt="SABITECH" />
+          <img src="../assets/img/logo_texto.ico" alt="SABITECH" />
         </a>
 
         <nav className="inicio-accesos">
