@@ -55,7 +55,7 @@ class CharlaController extends Controller
         // hora_fin
     }
     //Obtener charla por id
-    public function idCharla(Request $idCharla): JsonResponse
+    public function idCharla(int $idCharla): JsonResponse
     {
         $charlas = DB::table('charlas')->select('id')->where('id', $idCharla)->get();
         if ($charlas) {

@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
+        $usuarioActual = $request->user();
+        if ($usuarioActual->rol === 'administrador'){
         $usuarios = DB::table('usuarios')
             ->select(
                 'id',
@@ -26,12 +28,15 @@ class UsuarioController extends Controller
 
         return response()->json($usuarios, 200);
     }
+        //Si no eres administrador, no muestra nada.
+        return response()->json(['message' => 'No tienes permisos para esta acción.'], 404);
+    }
 
 
 
-    public function idUsuario(Request $peticion, int $idUsuario): JsonResponse
+    public function idUsuario(Request $request, int $idUsuario): JsonResponse
     {
-        $usuarioActual = $peticion->user();
+        $usuarioActual = $request->user();
 
         //Datos comunes a mostrar
         $columnas = ['id', 'nombre', 'apellidos', 'correo_electronico', 'correo_confirmado', 'created_at'];
@@ -50,7 +55,7 @@ class UsuarioController extends Controller
                 ->get();
 
             if ($usuario === null) {
-                return response()->json(['message' => 'Usuario no encontrado.'], 404);
+                return response()->json(['message' => 'Usuario no encontrado.'], 403);
             }
 
             return response()->json($usuario, 200);
@@ -59,7 +64,31 @@ class UsuarioController extends Controller
         //Si no eres el usuario o administrador, no muestra nada.
         return response()->json(['message' => 'No tienes permisos para esta acción.'], 404);
     }
-} 
+
+    public function reservasUsuario(Request $request, int $idUsuario): JsonResponse
+    {
+        $usuarioActual = $request->user();
+
+        //Datos comunes a mostrar
+        $columnas = ['id', 'usuario_id', 'charla_id', 'estado', 'correo_enviado_en', 'hora_entrada', 'created_at'];
+        
+        //Muestra si eres el user o admin
+        if ($usuarioActual->id === $idUsuario || $usuarioActual->rol === 'administrador') {
+
+            $lista = DB::table('reservas')
+                ->select($columnas)
+                ->where('usuario_id', $idUsuario)
+                ->get();
+
+                        return response()->json($lista, 200);
+        }
+
+        //Si no eres el usuario o administrador, no muestra nada.
+        return response()->json(['message' => 'No tienes permisos para esta acción.'], 403);
+    }
+    } 
+
+
 
 // Respuesta JSON
         // ==============
