@@ -6,19 +6,9 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function PerfilView() {
   const { usuario, cerrarSesion } = useAuth();
 
-  const formatearFecha = (fecha) => {
-    if (!fecha) return "No disponible";
-
-    return new Date(fecha).toLocaleDateString("es-ES", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    });
-  };
-
   if (!usuario) {
     return (
-      <main className="perfil">
+      <main className="perfil-pagina">
         <p>Cargando información del perfil...</p>
       </main>
     );
@@ -35,8 +25,8 @@ function PerfilView() {
 
         <div className="perfil-acciones">
           <Link to="/charlas" className="perfil-boton perfil-boton-principal">
-            <i className="bi bi-chat-left-text"></i>
-            Mis charlas
+            <i class="bi bi-house"></i>
+            Volver a inicio
           </Link>
 
           <button
@@ -50,40 +40,101 @@ function PerfilView() {
         </div>
       </section>
 
-      {/* INFORMACIÓN PERSONAL */}
-      <section className="perfil-bloque">
-        <div className="perfil-bloque-cabecera">
-          <h2>Información personal</h2>
-          <p>Datos asociados a tu cuenta.</p>
-        </div>
-
-        <div className="perfil-datos">
-          <div className="perfil-dato">
-            <span className="perfil-etiqueta">Nombre completo</span>
-            <span className="perfil-valor">
-              {usuario.nombreCompleto || usuario.nombre || "No disponible"}
-            </span>
+      {/* CONTENIDO DEL PERFIL */}
+      <section className="perfil-contenido">
+        {/* INFORMACIÓN PERSONAL */}
+        <article className="perfil-card perfil-card-datos">
+          <div className="perfil-card-cabecera">
+            <h2>Información personal</h2>
+            <p>Datos asociados a tu cuenta.</p>
           </div>
 
-          <div className="perfil-dato">
-            <span className="perfil-etiqueta">Correo electrónico</span>
-            <span className="perfil-valor">
-              {usuario.correo || "No disponible"}
-            </span>
+          <div className="perfil-datos">
+            <div className="perfil-dato">
+              <span className="perfil-etiqueta">Nombre</span>
+              <span className="perfil-valor">
+                {usuario.nombre || "No disponible"}
+              </span>
+            </div>
+
+            <div className="perfil-dato">
+              <span className="perfil-etiqueta">Apellidos</span>
+              <span className="perfil-valor">
+                {usuario.apellidos || "No disponible"}
+              </span>
+            </div>
+
+            <div className="perfil-dato">
+              <span className="perfil-etiqueta">Correo electrónico</span>
+              <span className="perfil-valor">
+                {usuario.correo || "No disponible"}
+              </span>
+            </div>
           </div>
 
-          {/* <div className="perfil-dato">
-            <span className="perfil-etiqueta">Rol</span>
-            <span className="perfil-rol">{usuario.rol || "Usuario"}</span>
-          </div> */}
+          <div className="perfil-edicion">
+            <button type="button" className="perfil-boton-edicion" disabled>
+              <i className="bi bi-pencil"></i>
+              Editar datos
+            </button>
 
-          <div className="perfil-dato">
-            <span className="perfil-etiqueta">Fecha de alta</span>
-            <span className="perfil-valor">
-              {formatearFecha(usuario.fecha_alta)}
-            </span>
+            <button type="button" className="perfil-boton-edicion" disabled>
+              <i className="bi bi-lock"></i>
+              Cambiar contraseña
+            </button>
           </div>
-        </div>
+        </article>
+
+        {/* CHARLAS RESERVADAS */}
+        <article className="perfil-card perfil-card-charlas">
+          <div className="perfil-card-cabecera">
+            <h2>Mis charlas reservadas</h2>
+            <p>Consulta las charlas en las que tienes una plaza reservada.</p>
+          </div>
+
+          <div className="perfil-lista-charlas">
+            {/* CONTENIDO VISUAL PROVISIONAL */}
+            <div className="perfil-charla">
+              <div className="perfil-charla-informacion">
+                <h3>Nombre de la charla</h3>
+                <p>
+                  <i className="bi bi-calendar-event"></i>
+                  Fecha de la charla
+                </p>
+                <p>
+                  <i className="bi bi-clock"></i>
+                  Horario
+                </p>
+                <p>
+                  <i className="bi bi-geo-alt"></i>
+                  Ubicación
+                </p>
+              </div>
+
+              <span className="perfil-charla-estado">Plaza reservada</span>
+            </div>
+
+            <div className="perfil-charla">
+              <div className="perfil-charla-informacion">
+                <h3>Nombre de la charla</h3>
+                <p>
+                  <i className="bi bi-calendar-event"></i>
+                  Fecha de la charla
+                </p>
+                <p>
+                  <i className="bi bi-clock"></i>
+                  Horario
+                </p>
+                <p>
+                  <i className="bi bi-geo-alt"></i>
+                  Ubicación
+                </p>
+              </div>
+
+              <span className="perfil-charla-estado">Plaza reservada</span>
+            </div>
+          </div>
+        </article>
       </section>
     </main>
   );

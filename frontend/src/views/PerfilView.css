@@ -17,8 +17,9 @@
    CONTENIDO PRINCIPAL
 ------------------------- */
 
-.perfil {
+.perfil-pagina {
   max-width: 1100px;
+  width: 100%;
   margin: 0 auto;
   padding: 24px;
   color: var(--texto);
@@ -36,7 +37,9 @@
   align-items: center;
   gap: 20px;
   padding: 0 24px;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
+  border: 1px solid #dce7ee;
+  border-radius: 8px;
   box-sizing: border-box;
   background-color: var(--fondo);
 }
@@ -59,7 +62,7 @@
 }
 
 /* -------------------------
-   ACCIONES
+   ACCIONES DE CABECERA
 ------------------------- */
 
 .perfil-acciones {
@@ -93,8 +96,6 @@
     border-color 0.2s ease;
 }
 
-/* Botón mis charlas */
-
 .perfil-boton-principal {
   color: var(--blanco);
   background-color: var(--azul-1);
@@ -107,8 +108,6 @@
   background-color: var(--azul-oscuro);
   border-color: var(--azul-oscuro);
 }
-
-/* Botón cerrar sesión */
 
 .perfil-boton-secundario {
   color: var(--azul-1);
@@ -123,28 +122,45 @@
 }
 
 /* -------------------------
-   BLOQUE INFORMACIÓN PERSONAL
+   DISTRIBUCIÓN PRINCIPAL
 ------------------------- */
 
-.perfil-bloque {
-  margin-bottom: 40px;
+.perfil-contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  gap: 20px;
+  align-items: start;
 }
 
-.perfil-bloque-cabecera {
-  margin-bottom: 20px;
+/* -------------------------
+   TARJETAS PRINCIPALES
+------------------------- */
+
+.perfil-card {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid #dce7ee;
+  border-radius: 8px;
+  background-color: var(--blanco);
+  box-sizing: border-box;
 }
 
-.perfil-bloque-cabecera h2 {
+.perfil-card-cabecera {
+  margin-bottom: 22px;
+}
+
+.perfil-card-cabecera h2 {
   margin: 0 0 8px;
   color: var(--azul-3);
   font-size: 20px;
   font-weight: 700;
 }
 
-.perfil-bloque-cabecera p {
+.perfil-card-cabecera p {
   margin: 0;
   color: var(--texto);
   font-size: 14px;
+  line-height: 1.5;
 }
 
 /* -------------------------
@@ -152,19 +168,23 @@
 ------------------------- */
 
 .perfil-datos {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
 .perfil-dato {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 16px;
-  border: 1px solid #dce7ee;
-  border-radius: 8px;
-  background-color: var(--blanco);
+  gap: 7px;
+  min-width: 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e6eef3;
+}
+
+.perfil-dato:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .perfil-etiqueta {
@@ -181,22 +201,109 @@
 }
 
 /* -------------------------
-   ROL
+   BOTONES DE EDICIÓN
 ------------------------- */
 
-.perfil-rol {
+.perfil-edicion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e6eef3;
+}
+
+.perfil-boton-edicion {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  align-self: center;
-  width: fit-content;
-  padding: 4px 12px;
+  gap: 8px;
+  width: 100%;
+  min-height: 40px;
+  padding: 10px 12px;
   color: var(--azul-1);
-  background-color: #eaf4fa;
-  border: 1px solid #cce5f2;
-  border-radius: 999px;
+  background-color: #f4f9fc;
+  border: 1px solid #cbdfea;
+  border-radius: 7px;
+  font-family: inherit;
   font-size: 13px;
   font-weight: 600;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* -------------------------
+   LISTA DE CHARLAS
+------------------------- */
+
+.perfil-lista-charlas {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* -------------------------
+   TARJETA INDIVIDUAL
+------------------------- */
+
+.perfil-charla {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  border: 1px solid #dce7ee;
+  border-radius: 8px;
+  background-color: #fbfdfe;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.perfil-charla:hover {
+  border-color: #b9dce9;
+  box-shadow: 0 3px 10px rgba(7, 59, 99, 0.05);
+}
+
+.perfil-charla-informacion {
+  min-width: 0;
+}
+
+.perfil-charla-informacion h3 {
+  margin: 0 0 12px;
+  color: var(--azul-oscuro);
+  font-size: 16px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.perfil-charla-informacion p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 7px 0 0;
+  color: var(--texto);
+  font-size: 13px;
+}
+
+.perfil-charla-informacion i {
+  color: var(--azul-2);
+  font-size: 14px;
+}
+
+.perfil-charla-estado {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 7px 11px;
+  color: #176b52;
+  background-color: #eaf7f1;
+  border: 1px solid #c8e9da;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 /* -------------------------
@@ -214,40 +321,97 @@
 ===================================== */
 
 @media (min-width: 769px) and (max-width: 1023px) {
-  /* CONTENIDO */
+  /* CONTENEDOR PRINCIPAL */
 
-  .perfil {
-    padding: 24px 20px;
+  .perfil-pagina {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 24px 12px;
   }
 
   /* CABECERA */
 
   .perfil-cabecera {
-    gap: 12px;
+    gap: 16px;
+    padding: 0 8px;
+    margin-bottom: 28px;
   }
 
   .perfil-cabecera-texto h1 {
-    font-size: 26px;
+    font-size: 25px;
   }
 
-  /* BOTONES */
-
   .perfil-acciones {
-    gap: 10px;
+    gap: 8px;
   }
 
   .perfil-boton {
-    width: 115px;
-    min-width: 115px;
+    width: 110px;
+    min-width: 110px;
     height: 38px;
-    padding: 9px 10px;
+    padding: 9px 8px;
+    font-size: 12px;
+  }
+
+  /* DISTRIBUCIÓN PRINCIPAL */
+
+  .perfil-contenido {
+    width: 100%;
+    grid-template-columns: minmax(240px, 0.9fr) minmax(0, 1.6fr);
+    gap: 16px;
+    align-items: start;
+  }
+
+  /* TARJETAS */
+
+  .perfil-card {
+    width: 100%;
+    min-width: 0;
+    padding: 16px;
+  }
+
+  .perfil-card-cabecera {
+    margin-bottom: 18px;
+  }
+
+  .perfil-card-cabecera h2 {
+    font-size: 18px;
+  }
+
+  .perfil-card-cabecera p {
     font-size: 13px;
   }
 
-  /* DATOS */
+  /* DATOS PERSONALES */
 
   .perfil-datos {
     gap: 14px;
+  }
+
+  .perfil-valor {
+    font-size: 14px;
+  }
+
+  /* CHARLAS */
+
+  .perfil-charla {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .perfil-charla-informacion h3 {
+    font-size: 15px;
+  }
+
+  .perfil-charla-informacion p {
+    font-size: 12px;
+  }
+
+  .perfil-charla-estado {
+    font-size: 11px;
   }
 }
 
@@ -257,9 +421,7 @@
 ===================================== */
 
 @media (max-width: 768px) {
-  /* CONTENIDO */
-
-  .perfil {
+  .perfil-pagina {
     padding: 20px 16px;
   }
 
@@ -269,7 +431,8 @@
     flex-direction: column;
     align-items: stretch;
     gap: 16px;
-    margin-bottom: 30px;
+    padding: 0;
+    margin-bottom: 28px;
   }
 
   .perfil-cabecera-texto h1 {
@@ -279,8 +442,6 @@
   .perfil-cabecera-texto p {
     font-size: 13px;
   }
-
-  /* BOTONES */
 
   .perfil-acciones {
     width: 100%;
@@ -296,33 +457,33 @@
     font-size: 12px;
   }
 
-  /* BLOQUE */
+  /* DISTRIBUCIÓN */
 
-  .perfil-bloque {
-    margin-bottom: 30px;
+  .perfil-contenido {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
-  .perfil-bloque-cabecera {
-    margin-bottom: 16px;
+  .perfil-card {
+    padding: 18px;
   }
 
-  .perfil-bloque-cabecera h2 {
+  .perfil-card-cabecera {
+    margin-bottom: 18px;
+  }
+
+  .perfil-card-cabecera h2 {
     font-size: 18px;
   }
 
-  .perfil-bloque-cabecera p {
+  .perfil-card-cabecera p {
     font-size: 13px;
   }
 
   /* DATOS */
 
   .perfil-datos {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .perfil-dato {
-    padding: 14px;
+    gap: 14px;
   }
 
   .perfil-etiqueta {
@@ -331,5 +492,31 @@
 
   .perfil-valor {
     font-size: 14px;
+  }
+
+  .perfil-edicion {
+    margin-top: 20px;
+    padding-top: 16px;
+  }
+
+  /* CHARLAS */
+
+  .perfil-charla {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 15px;
+  }
+
+  .perfil-charla-informacion h3 {
+    font-size: 15px;
+  }
+
+  .perfil-charla-informacion p {
+    font-size: 12px;
+  }
+
+  .perfil-charla-estado {
+    font-size: 11px;
   }
 }
