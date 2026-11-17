@@ -107,4 +107,44 @@ class ReservaController extends Controller
 
         return response()->json(['data' => ['id' => $id]], 201);
     }
+
+    public function reservasUsuario(Request $request, int $idUsuario): JsonResponse
+    {
+        $usuarioActual = $request->user();
+
+        //Muestra si eres el user o admin
+        if ($usuarioActual->id === $idUsuario || $usuarioActual->rol === 'administrador') {
+
+            $reservas = DB::table('reservas')
+                ->join('charlas', 'reservas.charla_id', '=', 'charlas.id')
+                ->join('salas', 'charlas.sala_id', '=', 'salas.id')
+                ->join('usuarios AS ponente', 'charlas.ponente_id', '=', 'ponente.id')
+                ->join('usuarios AS supervisor', 'charlas.supervisor_id', '=', 'supervisor.id')
+                ->select(
+                'charlas.id',
+                'charlas.titulo',
+                'charlas.rama',
+                'ponente.nombre AS nombre_ponente',
+                'ponente.apellidos AS apellidos_ponente',
+                'supervisor.nombre AS nombre_supervisor',
+                'supervisor.apellidos AS apellidos_supervisor',
+                'charlas.resumen_contenido',
+                'charlas.contenido',
+                'charlas.url_imagen',
+                'salas.nombre AS nombre_sala',
+                'charlas.fecha_hora_charla',
+                'charlas.fecha_hora_entrada',
+                'charlas.fecha_hora_fin',
+                )
+                ->where('reservas.usuario_id', $idUsuario)
+                ->orderBy('charlas.fecha_hora_charla')
+                ->get();
+
+                        return response()->json($reservas, 200);
+        }
+
+        //Si no eres el usuario o administrador, no muestra nada.
+        return response()->json(['message' => 'No tienes permisos para esta acción.'], 403);
+    }
 }
+

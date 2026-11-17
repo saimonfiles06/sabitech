@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/usuarios', [UsuarioController::class, 'index']);
     Route::get('/usuarios/{id}', [UsuarioController::class, 'idUsuario']);
     Route::get('/reservas', [ReservaController::class, 'index']);
-    Route::get('/usuarios/{id}/reservas', [UsuarioController::class, 'reservasUsuario']);
+    Route::get('/usuarios/{id}/reservas', [ReservaController::class, 'reservasUsuario']);
 });
