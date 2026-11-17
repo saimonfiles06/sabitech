@@ -11,6 +11,7 @@
   --texto: #173f61;
   --fondo: #f4f9fc;
   --blanco: #ffffff;
+  --borde: #dce7ee;
 }
 
 /* -------------------------
@@ -25,7 +26,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #dce7ee;
+  border-bottom: 1px solid var(--borde);
   box-sizing: border-box;
 }
 
@@ -91,9 +92,6 @@
   color: var(--blanco);
   background-color: var(--azul-1);
   border: 1px solid var(--azul-1);
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
   gap: 8px;
 }
 
@@ -103,7 +101,7 @@
   border-color: var(--azul-oscuro);
 }
 
-/* Dimensiones comunes: Mi perfil y Cerrar sesión */
+/* Dimensiones comunes de botones */
 
 .inicio-boton-perfil,
 .inicio-boton-login,
@@ -133,16 +131,13 @@
 .inicio {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 30px 24px;
   text-align: left;
+  box-sizing: border-box;
 }
 
 .inicio-bloque {
   margin-bottom: 40px;
-}
-
-.inicio-bloque h2 {
-  color: var(--azul-3);
 }
 
 .inicio-mensaje {
@@ -151,72 +146,399 @@
   color: var(--texto);
 }
 
+.inicio-error {
+  color: #b42318;
+}
+
 /* -------------------------
-   CHARLAS
+   CABECERA DE CHARLAS
 ------------------------- */
 
-.etiqueta-rama {
-  font-size: 12px;
-  color: var(--azul-1);
-  border: 1px solid var(--azul-3);
-  border-radius: 999px;
-  padding: 2px 10px;
+.inicio-bloque-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
 }
+
+.inicio-bloque-cabecera h2 {
+  margin: 0;
+  color: var(--azul-oscuro);
+  font-size: 25px;
+}
+
+.inicio-bloque-cabecera p {
+  margin: 5px 0 0;
+  color: var(--texto);
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.inicio-total-charlas {
+  flex-shrink: 0;
+  padding: 7px 13px;
+  color: var(--azul-1);
+  background-color: #e8f3fb;
+  border: 1px solid #cde3f3;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* -------------------------
+   LISTADO DE CHARLAS
+------------------------- */
+
+.lista-charlas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* -------------------------
+   TARJETA DE CHARLA
+------------------------- */
+
+.tarjeta-charla {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(340px, 1fr);
+  align-items: stretch;
+  gap: 28px;
+
+  padding: 22px 24px;
+
+  background-color: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+
+  box-shadow: 0 2px 8px rgba(7, 59, 99, 0.04);
+
+  box-sizing: border-box;
+  min-width: 0;
+
+  animation: aparecer-charla 0.5s ease both;
+  animation-delay: var(--retraso, 0ms);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.tarjeta-charla:hover {
+  transform: translateY(-3px);
+  border-color: #b7d8ec;
+  box-shadow: 0 7px 20px rgba(7, 59, 99, 0.09);
+}
+
+/* Animación de entrada */
+
+@keyframes aparecer-charla {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------
+   CONTENIDO PRINCIPAL E IMAGEN
+------------------------- */
+
+.tarjeta-charla-contenido {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  min-width: 0;
+  min-height: 190px;
+  padding: 22px;
+
+  /* Degradado multicolor desde las cuatro esquinas */
+  background:
+    radial-gradient(ellipse at top left, #1664c2 0%, transparent 65%),
+    radial-gradient(ellipse at top right, #1d86c7 0%, transparent 65%),
+    radial-gradient(ellipse at bottom left, #2aa8cb 0%, transparent 65%),
+    radial-gradient(ellipse at bottom right, #42c5cd 0%, transparent 65%),
+    #073b63;
+
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+/* Imagen de fondo */
+.imagen-fondo-charla {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition: transform 0.5s ease;
+}
+
+.tarjeta-charla:hover .imagen-fondo-charla {
+  transform: scale(1.04);
+}
+
+/* Capa de oscurecimiento para imágenes */
+.tarjeta-charla-contenido::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: transparent;
+}
+
+/* Aplicar el degradado oscuro únicamente con imagen */
+.tarjeta-charla-contenido.con-imagen::before {
+  background: linear-gradient(
+    110deg,
+    rgba(7, 59, 99, 0.94) 0%,
+    rgba(22, 100, 194, 0.78) 55%,
+    rgba(7, 59, 99, 0.52) 100%
+  );
+}
+
+/* Rama */
+
+.etiqueta-rama {
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+
+  padding: 4px 11px;
+
+  color: var(--blanco);
+  background-color: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+/* Título */
 
 .titulo-charla {
   display: block;
-  margin: 8px 0 4px;
-  color: var(--azul-oscuro);
+  margin: 10px 0 7px;
+
+  color: var(--blanco);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+
+  overflow-wrap: anywhere;
 }
+
+/* Resumen */
 
 .resumen-charla {
   margin: 0;
+
+  color: rgba(255, 255, 255, 0.92);
   font-size: 14px;
-  opacity: 0.8;
-  color: var(--texto);
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
 }
 
 /* -------------------------
-   TABLAS
+   DATOS COMPLEMENTARIOS
 ------------------------- */
 
-.tabla-contenedor.tabla-charlas {
-  max-height: none;
-  background-color: var(--fondo);
+.tarjeta-charla-datos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  gap: 16px 20px;
+
+  min-width: 0;
+  padding-left: 24px;
+  border-left: 1px solid var(--borde);
 }
 
-.tabla-contenedor {
-  max-height: 360px;
-  overflow-y: auto;
-  border: 1px solid #dce7ee;
-  border-radius: 8px;
-  background-color: var(--blanco);
+.dato-charla {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
 }
 
-.tabla-contenedor table {
-  width: 100%;
-  border-collapse: collapse;
+.dato-charla > i {
+  flex-shrink: 0;
+  margin-top: 3px;
+
+  color: var(--azul-2);
+  font-size: 17px;
 }
 
-.tabla-contenedor th,
-.tabla-contenedor td {
-  padding: 8px 12px;
-  text-align: left;
-  border-bottom: 1px solid #dce7ee;
-  vertical-align: top;
+.dato-charla > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 }
 
-.tabla-contenedor th {
-  color: var(--azul-oscuro);
-  background-color: #eaf4fa;
+.dato-charla-label {
+  color: #71869a;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
-.tabla-contenedor td {
+.dato-charla strong {
   color: var(--texto);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 
-.tabla-contenedor tbody tr:hover {
-  background-color: #f0f8fc;
+/* Horario */
+
+.dato-charla-horario {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.dato-charla-fin {
+  color: #71869a;
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* -------------------------
+   BOTONES DE ACCIÓN
+------------------------- */
+
+.tarjeta-charla-acciones {
+  grid-column: 2;
+  grid-row: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
+
+  min-width: 0;
+}
+
+.tarjeta-charla-acciones button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 12px;
+
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.tarjeta-charla-acciones button i {
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+/* Ver detalles */
+
+.boton-detalles-charla {
+  color: var(--azul-1);
+  background-color: var(--blanco);
+  border: 1px solid var(--azul-1);
+}
+
+.boton-detalles-charla:hover {
+  color: var(--blanco);
+  background-color: var(--azul-1);
+}
+
+/* Reservar asistencia */
+
+.boton-reservar-charla {
+  color: var(--blanco);
+  background-color: var(--azul-1);
+  border: 1px solid var(--azul-1);
+}
+
+.boton-reservar-charla:hover {
+  color: var(--blanco);
+  background-color: var(--azul-oscuro);
+  border-color: var(--azul-oscuro);
+}
+
+/* -------------------------
+   SIN CHARLAS
+------------------------- */
+
+.inicio-sin-charlas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 55px 20px;
+
+  background-color: var(--blanco);
+  border: 1px dashed #bfd5e3;
+  border-radius: 12px;
+
+  text-align: center;
+}
+
+.inicio-sin-charlas > i {
+  color: var(--azul-2);
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.inicio-sin-charlas h3 {
+  margin: 0 0 8px;
+  color: var(--azul-oscuro);
+  font-size: 18px;
+}
+
+.inicio-sin-charlas p {
+  margin: 0;
+  color: var(--texto);
+  font-size: 14px;
+  opacity: 0.75;
 }
 
 /* -------------------------
@@ -224,9 +546,18 @@
 ------------------------- */
 
 .inicio-accesos a:focus-visible,
-.inicio-accesos button:focus-visible {
+.tarjeta-charla-acciones button:focus-visible {
   outline: 2px solid var(--azul-4);
   outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta-charla,
+  .imagen-fondo-charla,
+  .tarjeta-charla-acciones button {
+    animation: none;
+    transition: none;
+  }
 }
 
 /* =====================================
@@ -256,10 +587,9 @@
     white-space: nowrap;
   }
 
-  /* Botones de perfil y cerrar sesión */
-
   .inicio-boton-perfil,
-  .inicio-accesos button.inicio-boton-login {
+  .inicio-boton-login,
+  .inicio-boton-registro {
     width: 115px;
     min-width: 115px;
     height: 38px;
@@ -270,22 +600,71 @@
   /* CONTENIDO */
 
   .inicio {
-    padding: 24px 20px;
+    padding: 25px 20px;
   }
 
-  /* TABLAS */
+  /* DOS COLUMNAS */
 
-  .tabla-contenedor {
-    overflow-x: auto;
+  .lista-charlas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
   }
 
-  .tabla-contenedor table {
-    min-width: 650px;
+  /* TARJETAS VERTICALES */
+
+  .tarjeta-charla {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding: 18px;
   }
 
-  .tabla-contenedor th,
-  .tabla-contenedor td {
-    padding: 9px 10px;
+  /* IMAGEN Y CONTENIDO */
+
+  .tarjeta-charla-contenido {
+    min-height: 190px;
+    padding: 18px;
+  }
+
+  .titulo-charla {
+    font-size: 16px;
+  }
+
+  .resumen-charla {
+    font-size: 13px;
+  }
+
+  /* DATOS Y ACCIONES */
+
+  .tarjeta-charla-datos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    gap: 14px 10px;
+
+    padding: 15px 0 0;
+
+    border-left: none;
+    border-top: 1px solid var(--borde);
+  }
+
+  .dato-charla-horario {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .tarjeta-charla-acciones {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    gap: 7px;
+  }
+
+  .tarjeta-charla-acciones button {
+    min-height: 34px;
+    padding: 7px 5px;
+    font-size: 11px;
   }
 }
 
@@ -319,10 +698,9 @@
     text-align: center;
   }
 
-  /* Botones de perfil y cerrar sesión */
-
   .inicio-boton-perfil,
-  .inicio-accesos button.inicio-boton-login {
+  .inicio-boton-login,
+  .inicio-boton-registro {
     width: auto;
     min-width: 0;
     height: 36px;
@@ -350,71 +728,142 @@
     margin-bottom: 30px;
   }
 
-  .inicio-bloque h2 {
-    font-size: 18px;
+  .inicio-bloque-cabecera {
+    margin-bottom: 17px;
+    gap: 8px;
   }
 
-  /* TABLAS */
-
-  .tabla-contenedor {
-    max-height: 360px;
-    overflow-x: auto;
-    overflow-y: auto;
+  .inicio-bloque-cabecera h2 {
+    font-size: 20px;
   }
 
-  /* Tabla de charlas */
-
-  .tabla-contenedor.tabla-charlas table {
-    width: 100%;
-    min-width: 0;
-    table-layout: fixed;
+  .inicio-bloque-cabecera p {
+    font-size: 12px;
   }
 
-  /* Distribución de columnas */
-
-  .tabla-contenedor.tabla-charlas th:nth-child(1),
-  .tabla-contenedor.tabla-charlas td:nth-child(1) {
-    width: 40%;
-  }
-
-  .tabla-contenedor.tabla-charlas th:nth-child(2),
-  .tabla-contenedor.tabla-charlas td:nth-child(2) {
-    width: 23%;
-  }
-
-  .tabla-contenedor.tabla-charlas th:nth-child(3),
-  .tabla-contenedor.tabla-charlas td:nth-child(3) {
-    width: 13%;
-  }
-
-  .tabla-contenedor.tabla-charlas th:nth-child(4),
-  .tabla-contenedor.tabla-charlas td:nth-child(4) {
-    width: 24%;
-  }
-
-  /* Ajustes de contenido */
-
-  .tabla-contenedor.tabla-charlas th,
-  .tabla-contenedor.tabla-charlas td {
-    padding: 8px 5px;
+  .inicio-total-charlas {
+    padding: 6px 9px;
     font-size: 11px;
-    text-align: left;
-    vertical-align: top;
-    overflow-wrap: anywhere;
-    word-break: normal;
+  }
+
+  /* DOS COLUMNAS */
+
+  .lista-charlas {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* TARJETAS */
+
+  .tarjeta-charla {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 13px;
+
+    padding: 11px;
+    border-radius: 10px;
+  }
+
+  .tarjeta-charla:hover {
+    transform: translateY(-2px);
+  }
+
+  /* IMAGEN */
+
+  .tarjeta-charla-contenido {
+    min-height: 190px;
+    padding: 13px 11px;
+    border-radius: 8px;
+  }
+
+  .etiqueta-rama {
+    padding: 3px 7px;
+    font-size: 10px;
   }
 
   .titulo-charla {
-    font-size: 13px;
+    margin: 8px 0 6px;
+    font-size: 14px;
+    line-height: 1.35;
   }
 
   .resumen-charla {
     font-size: 11px;
+    line-height: 1.5;
   }
 
-  .etiqueta-rama {
+  /* DATOS */
+
+  .tarjeta-charla-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+
+    padding: 12px 0 0;
+
+    border-left: none;
+    border-top: 1px solid var(--borde);
+  }
+
+  .dato-charla {
+    gap: 7px;
+  }
+
+  .dato-charla > i {
+    margin-top: 2px;
+    font-size: 14px;
+  }
+
+  .dato-charla > div {
+    gap: 3px;
+  }
+
+  .dato-charla-label {
+    font-size: 9px;
+  }
+
+  .dato-charla strong {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .dato-charla-fin {
     font-size: 10px;
-    padding: 2px 6px;
+  }
+
+  /* BOTONES */
+
+  .tarjeta-charla-acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 3px;
+  }
+
+  .tarjeta-charla-acciones button {
+    min-height: 34px;
+    padding: 7px 5px;
+    font-size: 10px;
+    gap: 5px;
+  }
+
+  .tarjeta-charla-acciones button i {
+    font-size: 12px;
+  }
+
+  /* SIN CHARLAS */
+
+  .inicio-sin-charlas {
+    padding: 40px 15px;
+  }
+
+  .inicio-sin-charlas h3 {
+    font-size: 16px;
+  }
+
+  .inicio-sin-charlas p {
+    font-size: 12px;
   }
 
   .inicio-mensaje {
