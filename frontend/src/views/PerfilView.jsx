@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../auth/ContextoAuth.jsx";
 import { listarDeUsuario } from "../api/ReservaApi.js";
 import { ApiError } from "../api/ApiError.js";
@@ -26,7 +26,7 @@ function formatearHora(texto) {
 }
 
 function PerfilView() {
-    const { usuario, token, cerrarSesion } = useAuth();
+  const { usuario, token, cerrarSesion } = useAuth();
   const [charlas, setCharlas] = useState([]);
   const [cargandoCharlas, setCargandoCharlas] = useState(true);
   const [errorCharlas, setErrorCharlas] = useState("");
@@ -53,12 +53,9 @@ function PerfilView() {
     cargarCharlas();
   }, [usuario, token]);
 
+  // Sin sesión (por ejemplo, justo después de cerrarla) se vuelve al inicio
   if (!usuario) {
-    return (
-      <main className="perfil-pagina">
-        <p>Cargando información del perfil...</p>
-      </main>
-    );
+    return <Navigate to="/" replace />;
   }
 
   return (
