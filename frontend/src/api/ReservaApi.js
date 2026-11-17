@@ -30,3 +30,21 @@ export async function listarDeUsuario(idUsuario, token) {
   }
   return json.map(Charla.fromJSON);
 }
+
+/** Reserva una plaza en una charla para el usuario de la sesión (necesita el token) */
+export async function reservar(idCharla, token) {
+  const respuesta = await fetch(RESERVAS_URL, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ charla_id: idCharla }),
+  });
+  const json = await respuesta.json();
+  if (!respuesta.ok) {
+    throw new ApiError(respuesta.status, json.message, json);
+  }
+  return json;
+}

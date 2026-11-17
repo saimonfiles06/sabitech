@@ -21,4 +21,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/usuarios/{id}', [UsuarioController::class, 'idUsuario']);
     Route::get('/reservas', [ReservaController::class, 'index']);
     Route::get('/usuarios/{id}/reservas', [ReservaController::class, 'reservasUsuario']);
+    Route::post('/reservas', [ReservaController::class, 'reservar']);
 });

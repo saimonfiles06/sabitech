@@ -1,7 +1,7 @@
 import CharlaTarjeta from "./CharlaTarjeta.jsx";
 import EstadoVacioCharlas from "./EstadoVacioCharlas.jsx";
 
-function CharlasListado({ charlas }) {
+function CharlasListado({ charlas, idsReservadas }) {
   return (
     <section className="inicio-bloque">
       {/* CABECERA DEL LISTADO */}
@@ -20,7 +20,12 @@ function CharlasListado({ charlas }) {
       {charlas.length > 0 ? (
         <div className="lista-charlas">
           {charlas.map((charla, index) => (
-            <CharlaTarjeta key={charla.id} charla={charla} index={index} />
+            <CharlaTarjeta
+              key={charla.id}
+              charla={charla}
+              index={index}
+              yaReservada={idsReservadas.has(charla.id)}
+            />
           ))}
         </div>
       ) : (

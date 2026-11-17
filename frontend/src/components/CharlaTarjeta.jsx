@@ -1,6 +1,6 @@
 import CharlaDatos from "./CharlaDatos.jsx";
 
-function CharlaTarjeta({ charla, index }) {
+function CharlaTarjeta({ charla, index, yaReservada }) {
   return (
     <article
       className="tarjeta-charla"
@@ -29,7 +29,7 @@ function CharlaTarjeta({ charla, index }) {
       </div>
 
       {/* INFORMACIÓN COMPLEMENTARIA */}
-      <CharlaDatos charla={charla} />
+      <CharlaDatos charla={charla} yaReservada={yaReservada} />
     </article>
   );
 }

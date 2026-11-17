@@ -870,3 +870,38 @@
     padding: 30px 16px;
   }
 }
+
+/* -------------------------
+   RESERVA
+------------------------- */
+
+/* Botón de reservar mientras se envía la petición */
+.boton-reservar-charla:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Botón fantasma inactivo: la charla ya está reservada */
+.tarjeta-charla-acciones .boton-fantasma,
+.tarjeta-charla-acciones .boton-fantasma:hover {
+  color: var(--azul-1);
+  background-color: transparent;
+  border: 1px solid var(--azul-1);
+  opacity: 0.75;
+  cursor: default;
+}
+
+/* Mensaje con el resultado de la reserva en cada tarjeta */
+.reserva-mensaje {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #1a7f37;
+}
+
+.reserva-mensaje:not(:empty) {
+  margin-top: 0.5rem;
+}
+
+.reserva-mensaje-error {
+  color: #b42318;
+}

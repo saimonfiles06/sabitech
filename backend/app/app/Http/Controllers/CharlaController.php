@@ -32,7 +32,8 @@ class CharlaController extends Controller
                 'charlas.fecha_hora_fin',
             )
 
-            ->orderBy('charlas.id')
+            ->where('estado', 'activa')             
+            ->orderBy('fecha_hora_charla')
             ->get();
 
         return response()->json($charlas, 200);

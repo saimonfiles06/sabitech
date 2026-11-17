@@ -50,62 +50,90 @@ class ReservaController extends Controller
         // created_at
     }
 
-    public function store(Request $request): JsonResponse
+   // POST /api/reservas (requiere token)
+    // El usuario que hace la petición reserva una plaza en una charla
+    public function reservar(Request $peticion): JsonResponse
     {
-        $datos = $request->validate([
-            'usuario_id' => 'required|integer|exists:usuarios,id',
-            'charla_id'  => 'required|integer|exists:charlas,id',
-        ]);
+        $datos = $peticion->validate(
+            ['charla_id' => ['required', 'integer', 'exists:charlas,id']],
+            [
+                'charla_id.required' => 'Falta indicar la charla.',
+                'charla_id.integer'  => 'La charla indicada no es válida.',
+                'charla_id.exists'   => 'La charla no existe.',
+            ]
+        );
 
-        $charla = DB::table('charlas')
-            ->join('salas', 'charlas.sala_id', '=', 'salas.id')
-            ->where('charlas.id', $datos['charla_id'])
-            ->select('charlas.estado', 'salas.aforo')
-            ->first();
+        // El usuario sale del token, nunca de los datos enviados
+        $idUsuario = $peticion->user()->id;
+        $idCharla  = $datos['charla_id'];
 
-        // Solo se puede reservar en charlas activas
-        if ($charla->estado !== 'activa') {
-            return response()->json(
-                ['message' => 'La charla no admite reservas.'],
-                422
-            );
-        }
+        // Todo dentro de una transacción: o se hace entero o no se hace nada
+        return DB::transaction(function () use ($idUsuario, $idCharla) {
 
-        // Un usuario solo puede reservar una vez la charla
-        $yaReservada = DB::table('reservas')
-            ->where('usuario_id', $datos['usuario_id'])
-            ->where('charla_id', $datos['charla_id'])
-            ->exists();
+            // Bloquea la charla hasta terminar: si llegan dos reservas a la vez,
+            // la segunda espera a que acabe la primera antes de contar plazas
+            $charla = DB::table('charlas')
+                ->join('salas', 'charlas.sala_id', '=', 'salas.id')
+                ->where('charlas.id', $idCharla)
+                ->select('charlas.estado', 'charlas.fecha_hora_charla', 'salas.aforo')
+                ->lockForUpdate()
+                ->first();
 
-        if ($yaReservada) {
-            return response()->json(
-                ['message' => 'El usuario ya tiene una reserva para esta charla.'],
-                409
-            );
-        }
+            // Solo se puede reservar en charlas activas
+            if ($charla->estado !== 'activa') {
+                return response()->json(['message' => 'Esta charla no admite reservas.'], 422);
+            }
 
-        // Control de aforo de la sala (solo cuentan las reservas confirmadas)
-        $confirmadas = DB::table('reservas')
-            ->where('charla_id', $datos['charla_id'])
-            ->where('estado', 'confirmada')
-            ->count();
+            // No se puede reservar una charla que ya ha empezado
+            if (now()->greaterThanOrEqualTo($charla->fecha_hora_charla)) {
+                return response()->json(['message' => 'La charla ya ha empezado.'], 422);
+            }
 
-        if ($confirmadas >= $charla->aforo) {
-            return response()->json(
-                ['message' => 'No quedan plazas disponibles.'],
-                409
-            );
-        }
+            // ¿Tenía ya una reserva de esta charla (confirmada o cancelada)?
+            $reservaPrevia = DB::table('reservas')
+                ->where('usuario_id', $idUsuario)
+                ->where('charla_id', $idCharla)
+                ->first();
 
-        $id = DB::table('reservas')->insertGetId([
-            'usuario_id' => $datos['usuario_id'],
-            'charla_id'  => $datos['charla_id'],
-            'estado'     => 'confirmada',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+            if ($reservaPrevia && $reservaPrevia->estado === 'confirmada') {
+                return response()->json(['message' => 'Ya tienes una plaza reservada en esta charla.'], 409);
+            }
 
-        return response()->json(['data' => ['id' => $id]], 201);
+            // Control de aforo: solo cuentan las reservas confirmadas
+            $plazasOcupadas = DB::table('reservas')
+                ->where('charla_id', $idCharla)
+                ->where('estado', 'confirmada')
+                ->count();
+
+            if ($plazasOcupadas >= $charla->aforo) {
+                return response()->json(['message' => 'No quedan plazas disponibles.'], 409);
+            }
+
+            if ($reservaPrevia) {
+                // La había cancelado: se vuelve a confirmar la misma reserva
+                DB::table('reservas')
+                    ->where('id', $reservaPrevia->id)
+                    ->update([
+                        'estado'     => 'confirmada',
+                        'updated_at' => now(),
+                    ]);
+
+                $idReserva = $reservaPrevia->id;
+            } else {
+                $idReserva = DB::table('reservas')->insertGetId([
+                    'usuario_id' => $idUsuario,
+                    'charla_id'  => $idCharla,
+                    'estado'     => 'confirmada',
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+
+            return response()->json([
+                'message' => 'Plaza reservada correctamente.',
+                'data'    => ['id' => $idReserva],
+            ], 201);
+        });
     }
 
     public function reservasUsuario(Request $request, int $idUsuario): JsonResponse
