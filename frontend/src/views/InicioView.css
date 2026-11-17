@@ -106,7 +106,8 @@
 /* Dimensiones comunes: Mi perfil y Cerrar sesión */
 
 .inicio-boton-perfil,
-.inicio-boton-login {
+.inicio-boton-login,
+.inicio-boton-registro {
   display: inline-flex;
   align-items: center;
   justify-content: center;
