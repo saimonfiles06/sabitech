@@ -266,10 +266,10 @@
 
   /* Degradado multicolor desde las cuatro esquinas */
   background:
-    radial-gradient(ellipse at top left, #1664c2 0%, transparent 65%),
-    radial-gradient(ellipse at top right, #1d86c7 0%, transparent 65%),
-    radial-gradient(ellipse at bottom left, #2aa8cb 0%, transparent 65%),
-    radial-gradient(ellipse at bottom right, #42c5cd 0%, transparent 65%),
+    radial-gradient(ellipse at top left, rgb(88, 243, 217) 0%, transparent 65%),
+    radial-gradient(ellipse at top right, rgb(133, 0, 226) 0%, transparent 65%),
+    radial-gradient(ellipse at bottom left, rgb(255, 0, 123) 0%, transparent 65%),
+    radial-gradient(ellipse at bottom right, rgb(255, 68, 47) 0%, transparent 65%),
     #073b63;
 
   border-radius: 10px;
