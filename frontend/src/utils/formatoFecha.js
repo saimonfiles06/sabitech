@@ -24,3 +24,18 @@ export function formatearHora(texto) {
     minute: "2-digit",
   });
 }
+
+/**
+ * "2026-12-01 09:30:00"
+ * Devuelve: "1 dic, 09:30"
+ */
+export function formatearFecha(texto) {
+  if (!texto) return "";
+
+  return new Date(texto.replace(" ", "T")).toLocaleString("es-ES", {
+    day: "numeric",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
