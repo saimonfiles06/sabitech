@@ -8,7 +8,7 @@ function CharlaTarjeta({ charla, index, yaReservada, reservando, onReservar }) {
       style={{ "--retraso": `${index * 70}ms` }}
     >
       {/* INFORMACIÓN PRINCIPAL */}
-      <div className="tarjeta-charla-contenido">
+      <div className={`tarjeta-charla-contenido ${charla.rama?.toLowerCase()}`}>
         {charla.imagen_url && (
           <img
             className="imagen-fondo-charla"
@@ -29,7 +29,7 @@ function CharlaTarjeta({ charla, index, yaReservada, reservando, onReservar }) {
       </div>
 
       {/* INFORMACIÓN COMPLEMENTARIA */}
-      <CharlaDatos                                  // CAMBIA (líneas 32-37)
+      <CharlaDatos // CAMBIA (líneas 32-37)
         charla={charla}
         yaReservada={yaReservada}
         reservando={reservando}

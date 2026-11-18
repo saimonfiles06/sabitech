@@ -164,13 +164,13 @@
 
 .inicio-bloque-cabecera h2 {
   margin: 0;
-  color: var(--azul-oscuro);
+  color: var(--azul-3);
   font-size: 25px;
 }
 
 .inicio-bloque-cabecera p {
   margin: 5px 0 0;
-  color: var(--texto);
+  color: var(--azul-4);
   font-size: 14px;
   opacity: 0.75;
 }
@@ -264,16 +264,58 @@
   min-height: 190px;
   padding: 22px;
 
-  /* Degradado multicolor desde las cuatro esquinas */
-  background:
-    radial-gradient(ellipse at top left, rgb(88, 243, 217) 0%, transparent 65%),
-    radial-gradient(ellipse at top right, rgb(133, 0, 226) 0%, transparent 65%),
-    radial-gradient(ellipse at bottom left, rgb(255, 0, 123) 0%, transparent 65%),
-    radial-gradient(ellipse at bottom right, rgb(255, 68, 47) 0%, transparent 65%),
-    #073b63;
+  background: #073b63;
 
   border-radius: 10px;
   box-sizing: border-box;
+}
+/* Rama tecnológica: morado */
+.tarjeta-charla-contenido.tech {
+  background:
+    radial-gradient(
+      ellipse at top left,
+      rgb(190, 100, 255) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      rgb(100, 0, 200) 0%,
+      transparent 65%
+    ),
+    #241044;
+}
+
+/* Rama salud: verde */
+.tarjeta-charla-contenido.salud {
+  background:
+    radial-gradient(
+      ellipse at top left,
+      rgb(100, 255, 170) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      rgb(0, 150, 90) 0%,
+      transparent 65%
+    ),
+    #073b2b;
+}
+
+/* Rama business: naranja */
+/* Rama business: naranja Xtart */
+.tarjeta-charla-contenido.business {
+  background:
+    radial-gradient(
+      ellipse at top left,
+      rgb(255, 160, 100) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      rgb(255, 68, 47) 0%,
+      transparent 65%
+    ),
+    #54260e;
 }
 
 /* Imagen de fondo */
