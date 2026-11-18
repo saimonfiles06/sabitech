@@ -1,6 +1,6 @@
 import { formatearFecha } from "../utils/formatoFecha.js";
 
-function CharlaDatos({ charla }) {
+function CharlaDatos({ charla, yaReservada, reservando, onReservar }) {
   return (
     <div className="tarjeta-charla-datos">
       {/* PONENTE */}
@@ -49,9 +49,18 @@ function CharlaDatos({ charla }) {
           Ver detalles
         </button>
 
-        <button type="button" className="boton-reservar-charla">
-          <i className="bi bi-calendar-check"></i>
-          Reservar asistencia
+        <button
+          type="button"
+          className="boton-reservar-charla"
+          onClick={() => onReservar(charla.id)}
+          disabled={yaReservada || reservando}
+        >
+          <i className={yaReservada ? "bi bi-calendar-check-fill" : "bi bi-calendar-check"}></i>
+          {yaReservada
+            ? "Plaza reservada"
+            : reservando
+              ? "Reservando..."
+              : "Reservar asistencia"}
         </button>
       </div>
     </div>

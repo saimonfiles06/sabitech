@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";                       // NUEVO
 import { list as listarCharlas } from "../api/CharlaApi.js";
-import { listarDeUsuario } from "../api/ReservaApi.js";
+import { listarDeUsuario, reservar } from "../api/ReservaApi.js";     // CAMBIA: añade reservar
+import { ApiError } from "../api/ApiError.js";                        // NUEVO
 import { useAuth } from "../auth/ContextoAuth.jsx";
 
 import InicioHeader from "../components/InicioHeader.jsx";
@@ -15,6 +17,10 @@ export function InicioView() {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
   const { usuario, token } = useAuth();
+
+  const navegar = useNavigate();                                      // NUEVO
+  const [idCharlaEnProceso, setIdCharlaEnProceso] = useState(null);   // NUEVO
+  const [aviso, setAviso] = useState(null);                           // NUEVO: { tipo, texto }
 
   // Catálogo de charlas (para todo el mundo)
   useEffect(() => {
@@ -50,6 +56,33 @@ export function InicioView() {
     cargarReservas();
   }, [usuario, token]);
 
+  async function reservarCharla(idCharla) {
+    // Sin sesión no se puede reservar: se lleva al login
+    if (!usuario) {
+      navegar("/login");
+      return;
+    }
+
+    setIdCharlaEnProceso(idCharla);
+    setAviso(null);
+
+    try {
+      const respuesta = await reservar(idCharla, token);
+      setIdsReservadas((anteriores) => new Set(anteriores).add(idCharla));
+      setAviso({ tipo: "exito", texto: respuesta.message });
+    } catch (e) {
+      const texto =
+        e instanceof ApiError && e.status === 401
+          ? "Tu sesión ha caducado. Vuelve a iniciar sesión."
+          : e instanceof ApiError
+            ? e.message
+            : "No se ha podido reservar la plaza.";
+      setAviso({ tipo: "error", texto });
+    } finally {
+      setIdCharlaEnProceso(null);
+    }
+  }
+
   return (
     <div className="inicio-pagina">
       <InicioHeader />
@@ -60,7 +93,22 @@ export function InicioView() {
         ) : error ? (
           <p className="inicio-mensaje inicio-error">{error}</p>
         ) : (
-          <CharlasListado charlas={charlas} idsReservadas={idsReservadas} />
+          <>
+            {/* NUEVO: mensaje de éxito o error de la reserva */}
+            {aviso && (
+              <p className={`inicio-aviso inicio-aviso-${aviso.tipo}`} role="status">
+                {aviso.texto}
+              </p>
+            )}
+
+            {/* CAMBIA: nuevas props idCharlaEnProceso y onReservar */}
+            <CharlasListado
+              charlas={charlas}
+              idsReservadas={usuario ? idsReservadas : new Set()}
+              idCharlaEnProceso={idCharlaEnProceso}
+              onReservar={reservarCharla}
+            />
+          </>
         )}
       </main>
     </div>
