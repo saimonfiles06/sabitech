@@ -117,3 +117,7 @@ Se revisan y corrigen las migraciones, se acuerda dejar la implementación de Sw
 # 10/11/2026
 
 Se acuerda borrar ramas tras merges; la única que se deja es docs.
+
+# Semana 16/11
+
+Documentació checkpoint y creación release del repositorio.
