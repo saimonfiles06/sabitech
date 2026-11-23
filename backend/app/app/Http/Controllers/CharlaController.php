@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 
 class CharlaController extends Controller
 {
@@ -55,13 +56,37 @@ class CharlaController extends Controller
         // hora_entrada
         // hora_fin
     }
+    
     //Obtener charla por id
     public function idCharla(int $idCharla): JsonResponse
     {
-        $charlas = DB::table('charlas')->select('id')->where('id', $idCharla)->get();
-        if ($charlas) {
-            return response()->json($charlas->id, 200);
-        }
-        return response()->json('Charla no encontrada', 404);
+        // TODO
+        // $charlas = DB::table('charlas')->select('id')->where('id', $idCharla)->get();
+        // if ($charlas) {
+        //     return response()->json($charlas->id, 200);
+        // }
+        // return response()->json('Charla no encontrada', 404);
+        return response()->json(['message' => 'Pendiente de implementar.'], 501);
+    }
+
+    //Crear nueva charla
+    public function creaCharla(Request $peticion): JsonResponse
+    {
+        // TODO
+        return response()->json(['message' => 'Pendiente de implementar.'], 501);
+    }
+
+    //Modifica charla
+    public function modificaCharla(int $idCharla): JsonResponse
+    {
+        // TODO
+        return response()->json(['message' => 'Pendiente de implementar.'], 501);
+    }
+
+    //Elimina charla
+    public function borraCharla(int $idCharla): JsonResponse
+    {
+        // TODO
+        return response()->json(['message' => 'Pendiente de implementar.'], 501);
     }
 }

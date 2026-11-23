@@ -174,5 +174,23 @@ class ReservaController extends Controller
         //Si no eres el usuario o administrador, no muestra nada.
         return response()->json(['message' => 'No tienes permisos para esta acción.'], 403);
     }
+
+     public function reservasCharla(Request $request, int $idCharla): JsonResponse
+    {
+        // TODO
+        return response()->json(['message' => 'Pendiente de implementar.'], 501);
+    }
+
+    public function modificaReserva(Request $request, int $idReserva): JsonResponse
+    {
+        // TODO
+        return response()->json(['message' => 'Pendiente de implementar.'], 501);
+    }
+
+    public function borraReserva(Request $request, int $idReserva): JsonResponse
+    {
+        // TODO
+        return response()->json(['message' => 'Pendiente de implementar.'], 501);
+    }
 }
 

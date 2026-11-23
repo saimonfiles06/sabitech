@@ -81,12 +81,6 @@ class AuthController extends Controller
         return response()->json(['message' => 'Sesión cerrada.']);
     }
 
-    // GET /api/perfil (requiere token)
-    public function perfil(Request $peticion): JsonResponse
-    {
-        return response()->json($this->datosUsuario($peticion->user()));
-    }
-
     // Campos del usuario que se envían al frontend (nunca la contraseña)
     private function datosUsuario(Usuario $usuario): array
     {

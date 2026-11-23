@@ -30,7 +30,7 @@ class UsuarioController extends Controller
         return response()->json($usuarios, 200);
     }
         //Si no eres administrador, no muestra nada.
-        return response()->json(['message' => 'No tienes permisos para esta acción.'], 404);
+        return response()->json(['message' => 'No tienes permisos para esta acción.'], 403);
     }
 
 
@@ -66,8 +66,18 @@ class UsuarioController extends Controller
         return response()->json(['message' => 'No tienes permisos para esta acción.'], 403);
     }
 
-    
-    
+    // Actualiza los datos del usuario {id}
+    public function actualizaUsuario(Request $request, int $idUsuario): JsonResponse
+    {
+        // TODO
+        return response()->json(['message' => 'Pendiente de implementar.'], 501);
+    } 
+
+    // Borra los datos del usuario {id}
+    public function borraUsuario(Request $request, int $idUsuario): JsonResponse
+    {
+        // TODO
+        return response()->json(['message' => 'Pendiente de implementar.'], 501);
     } 
 
 
@@ -81,3 +91,4 @@ class UsuarioController extends Controller
         // rol
         // correo_confirmado
         // fecha_alta
+}
