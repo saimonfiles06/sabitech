@@ -121,3 +121,15 @@ Se acuerda borrar ramas tras merges; la única que se deja es docs.
 # Semana 16/11
 
 Documentació checkpoint y creación release del repositorio.
+
+# 23/11/2026
+
+Defensa checkpoint.
+
+# 25/11/2026
+
+Se acuerda nuevo trabajo en ramas; en main solo funcionalidades acabadas, dev/rama: funcionalidad en desarrollo. Llevar registro tareas y responsable asociado.
+
+División faena: David endpoints; Alejandro y Joan front.
+
+Front migración hacia mockups y refactorización css (separación por componentes).
