@@ -1,0 +1,20 @@
+/* -------------------------
+   VARIABLES DE COLOR
+------------------------- */
+
+:root {
+  /* Paleta (hoy duplicada en .inicio-pagina y .perfil-pagina) */
+  --azul-1: #1664c2;
+  --azul-2: #1d86c7;
+  --azul-3: #2aa8cb;
+  --azul-4: #42c5cd;
+  --azul-oscuro: #073b63;
+  --texto: #173f61;
+  --fondo: #f4f9fc;
+  --blanco: #ffffff;
+  --borde: #dce7ee;
+
+  /* Radios (el 8px aparece en las 4 vistas, el 7px en Inicio y Perfil) */
+  --radio: 8px;
+  --radio-boton: 7px;
+}

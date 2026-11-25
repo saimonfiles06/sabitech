@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import PerfilCharlaTarjeta from "./PerfilCharlaTarjeta.jsx";
 
+import "./PerfilCharlas.css";
+
 function PerfilCharlas({ charlas, cargandoCharlas, errorCharlas }) {
   return (
     <article className="perfil-card perfil-card-charlas">

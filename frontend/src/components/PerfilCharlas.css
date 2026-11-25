@@ -1,0 +1,129 @@
+/* -------------------------
+   LISTA DE CHARLAS
+------------------------- */
+
+.perfil-lista-charlas {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* -------------------------
+   TARJETA INDIVIDUAL
+------------------------- */
+
+.perfil-charla {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  border: 1px solid #dce7ee;
+  border-radius: 8px;
+  background-color: #fbfdfe;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.perfil-charla:hover {
+  border-color: #b9dce9;
+  box-shadow: 0 3px 10px rgba(7, 59, 99, 0.05);
+}
+
+.perfil-charla-informacion {
+  min-width: 0;
+}
+
+.perfil-charla-informacion h3 {
+  margin: 0 0 12px;
+  color: var(--azul-oscuro);
+  font-size: 16px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.perfil-charla-informacion p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 7px 0 0;
+  color: var(--texto);
+  font-size: 13px;
+}
+
+.perfil-charla-informacion i {
+  color: var(--azul-2);
+  font-size: 14px;
+}
+
+.perfil-charla-estado {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 7px 11px;
+  color: #176b52;
+  background-color: #eaf7f1;
+  border: 1px solid #c8e9da;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* =====================================
+   RESPONSIVE - TABLET
+   769px - 1023px
+===================================== */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  /* CHARLAS */
+
+  .perfil-charla {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .perfil-charla-informacion h3 {
+    font-size: 15px;
+  }
+
+  .perfil-charla-informacion p {
+    font-size: 12px;
+  }
+
+  .perfil-charla-estado {
+    font-size: 11px;
+  }
+}
+
+/* =====================================
+   RESPONSIVE - MÓVIL
+   Hasta 768px
+===================================== */
+
+@media (max-width: 768px) {
+  /* CHARLAS */
+
+  .perfil-charla {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 15px;
+  }
+
+  .perfil-charla-informacion h3 {
+    font-size: 15px;
+  }
+
+  .perfil-charla-informacion p {
+    font-size: 12px;
+  }
+
+  .perfil-charla-estado {
+    font-size: 11px;
+  }
+}
