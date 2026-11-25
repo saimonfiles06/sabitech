@@ -15,6 +15,9 @@ export class Charla {
     // Hora a partir de la cual se puede entrar a la charla
     fecha_hora_entrada = "",
     fecha_hora_fin = "",
+    aforo = null,
+    plazas_ocupadas = null,
+    plazas_libres = null
   }) {
     this.id = id;
     this.titulo = titulo;
@@ -30,6 +33,9 @@ export class Charla {
     this.fecha_hora_charla = fecha_hora_charla;
     this.fecha_hora_entrada = fecha_hora_entrada;
     this.fecha_hora_fin = fecha_hora_fin;
+    this.aforo = aforo;
+    this.plazas_ocupadas = plazas_ocupadas;
+    this.plazas_libres = plazas_libres;
   }
 
   /** Crea una Charla a partir del JSON de la API (los campos extra se ignoran). */
@@ -50,6 +56,9 @@ export class Charla {
       fecha_hora_charla: json.fecha_hora_charla,
       fecha_hora_entrada: json.fecha_hora_entrada,
       fecha_hora_fin: json.fecha_hora_fin,
+      aforo: json.aforo,
+      plazas_ocupadas: json.plazas_ocupadas,
+      plazas_libres: json.plazas_libres
     });
   }
 
@@ -70,6 +79,9 @@ export class Charla {
       fecha_hora_charla: this.fecha_hora_charla,
       fecha_hora_entrada: this.fecha_hora_entrada,
       fecha_hora_fin: this.fecha_hora_fin,
+      aforo: this.aforo,
+      plazas_ocupadas: this.plazas_ocupadas,
+      plazas_libres: this.plazas_libres
     };
   }
 }

@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 
 class CharlaController extends Controller
 {
-    //Listado charlas para rol administrador (todos los datos)
+    //Listado completo de charlas (todos los datos) Para todos los publicos.
     public function index(): JsonResponse
     {
+        // Subconsulta: reservas confirmadas de cada charla
+        $reservasConfirmadas = DB::table('reservas')
+            ->selectRaw('COUNT(*)')
+            ->whereColumn('reservas.charla_id', 'charlas.id')
+            ->where('reservas.estado', 'confirmada');
+
         $charlas = DB::table('charlas')
             ->join('usuarios AS ponente', 'charlas.ponente_id', '=', 'ponente.id')
             ->join('usuarios AS supervisor', 'charlas.supervisor_id', '=', 'supervisor.id')
@@ -28,14 +33,20 @@ class CharlaController extends Controller
                 'charlas.contenido',
                 'charlas.url_imagen',
                 'salas.nombre AS nombre_sala',
+                'salas.aforo',
                 'charlas.fecha_hora_charla',
                 'charlas.fecha_hora_entrada',
                 'charlas.fecha_hora_fin',
             )
-
+            ->selectSub($reservasConfirmadas, 'plazas_ocupadas') //Añadimos el dato de plazas ocupadas de la Subconsulta.
             ->where('estado', 'activa')             
             ->orderBy('fecha_hora_charla')
             ->get();
+
+        // Plazas libres de cada charla
+        foreach ($charlas as $charla) {
+            $charla->plazas_libres   = max(0, $charla->aforo - $charla->plazas_ocupadas);
+        }
 
         return response()->json($charlas, 200);
 
