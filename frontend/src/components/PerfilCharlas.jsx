@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import PerfilCharlaTarjeta from "./PerfilCharlaTarjeta.jsx";
 
 import "./PerfilCharlas.css";
+import "./PerfilCard.css";
 
 function PerfilCharlas({ charlas, cargandoCharlas, errorCharlas }) {
   return (

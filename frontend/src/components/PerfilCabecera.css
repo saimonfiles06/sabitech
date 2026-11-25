@@ -1,0 +1,185 @@
+.perfil-pagina {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  color: var(--texto);
+  text-align: left;
+  box-sizing: border-box;
+}
+/* -------------------------
+   CABECERA
+------------------------- */
+
+.perfil-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 0 24px;
+  margin-bottom: 32px;
+  border: 1px solid #dce7ee;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: var(--fondo);
+}
+
+.perfil-cabecera-texto {
+  min-width: 0;
+}
+
+.perfil-cabecera-texto h1 {
+  margin: 0 0 8px;
+  color: var(--azul-oscuro);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.perfil-cabecera-texto p {
+  margin: 0;
+  color: var(--texto);
+  font-size: 14px;
+}
+
+/* -------------------------
+   ACCIONES DE CABECERA
+------------------------- */
+
+.perfil-acciones {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.perfil-boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 125px;
+  min-width: 125px;
+  height: 40px;
+  padding: 10px 12px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.perfil-boton-principal {
+  color: var(--blanco);
+  background-color: var(--azul-1);
+  border: 1px solid var(--azul-1);
+  gap: 8px;
+}
+
+.perfil-boton-principal:hover {
+  color: var(--blanco);
+  background-color: var(--azul-oscuro);
+  border-color: var(--azul-oscuro);
+}
+
+.perfil-boton-secundario {
+  color: var(--azul-1);
+  background-color: transparent;
+  border: 1px solid var(--azul-1);
+  gap: 8px;
+}
+
+.perfil-boton-secundario:hover {
+  color: var(--blanco);
+  background-color: var(--azul-1);
+}
+
+/* =====================================
+   RESPONSIVE - TABLET
+   769px - 1023px
+===================================== */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  /* CONTENEDOR PRINCIPAL */
+
+  .perfil-pagina {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 24px 12px;
+  }
+
+  /* CABECERA */
+
+  .perfil-cabecera {
+    gap: 16px;
+    padding: 0 8px;
+    margin-bottom: 28px;
+  }
+
+  .perfil-cabecera-texto h1 {
+    font-size: 25px;
+  }
+
+  .perfil-acciones {
+    gap: 8px;
+  }
+
+  .perfil-boton {
+    width: 110px;
+    min-width: 110px;
+    height: 38px;
+    padding: 9px 8px;
+    font-size: 12px;
+  }
+}
+
+/* =====================================
+   RESPONSIVE - MÓVIL
+   Hasta 768px
+===================================== */
+
+@media (max-width: 768px) {
+  .perfil-pagina {
+    padding: 20px 16px;
+  }
+
+  /* CABECERA */
+
+  .perfil-cabecera {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 0;
+    margin-bottom: 28px;
+  }
+
+  .perfil-cabecera-texto h1 {
+    font-size: 24px;
+  }
+
+  .perfil-cabecera-texto p {
+    font-size: 13px;
+  }
+
+  .perfil-acciones {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .perfil-boton {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+    height: 38px;
+    padding: 9px 8px;
+    font-size: 12px;
+  }
+}

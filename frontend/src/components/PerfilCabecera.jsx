@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import "./PerfilCabecera.css";
+
 function PerfilCabecera({ cerrarSesion }) {
   return (
     <section className="perfil-cabecera">
