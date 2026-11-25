@@ -1,12 +1,3 @@
-.perfil-pagina {
-  max-width: 1100px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 24px;
-  color: var(--texto);
-  text-align: left;
-  box-sizing: border-box;
-}
 /* -------------------------
    CABECERA
 ------------------------- */
@@ -100,22 +91,20 @@
   color: var(--blanco);
   background-color: var(--azul-1);
 }
+/* -------------------------
+   ACCESIBILIDAD
+------------------------- */
 
+.perfil-boton:focus-visible {
+  outline: 2px solid var(--azul-4);
+  outline-offset: 3px;
+}
 /* =====================================
    RESPONSIVE - TABLET
    769px - 1023px
 ===================================== */
 
 @media (min-width: 769px) and (max-width: 1023px) {
-  /* CONTENEDOR PRINCIPAL */
-
-  .perfil-pagina {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 24px 12px;
-  }
-
   /* CABECERA */
 
   .perfil-cabecera {
@@ -147,10 +136,6 @@
 ===================================== */
 
 @media (max-width: 768px) {
-  .perfil-pagina {
-    padding: 20px 16px;
-  }
-
   /* CABECERA */
 
   .perfil-cabecera {

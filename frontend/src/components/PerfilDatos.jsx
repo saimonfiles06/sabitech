@@ -1,4 +1,5 @@
 import "./PerfilCard.css";
+import "./PerfilDatos.css";
 function PerfilDatos({ usuario }) {
   return (
     <article className="perfil-card perfil-card-datos">

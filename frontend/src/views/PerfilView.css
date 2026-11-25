@@ -1,18 +1,22 @@
+.perfil-pagina {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  color: var(--texto);
+  text-align: left;
+  box-sizing: border-box;
+}
 /* -------------------------
-   VARIABLES DE COLOR
+   DISTRIBUCIÓN PRINCIPAL
 ------------------------- */
 
-.perfil-pagina {
-  --azul-1: #1664c2;
-  --azul-2: #1d86c7;
-  --azul-3: #2aa8cb;
-  --azul-4: #42c5cd;
-  --azul-oscuro: #073b63;
-  --texto: #173f61;
-  --fondo: #f4f9fc;
-  --blanco: #ffffff;
+.perfil-contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  gap: 20px;
+  align-items: start;
 }
-
 /* =====================================
    RESPONSIVE - TABLET
    769px - 1023px
@@ -27,6 +31,14 @@
     margin: 0;
     padding: 24px 12px;
   }
+  /* DISTRIBUCIÓN PRINCIPAL */
+
+  .perfil-contenido {
+    width: 100%;
+    grid-template-columns: minmax(240px, 0.9fr) minmax(0, 1.6fr);
+    gap: 16px;
+    align-items: start;
+  }
 }
 
 /* =====================================
@@ -37,5 +49,11 @@
 @media (max-width: 768px) {
   .perfil-pagina {
     padding: 20px 16px;
+  }
+  /* DISTRIBUCIÓN */
+
+  .perfil-contenido {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 }

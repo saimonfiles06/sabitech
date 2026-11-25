@@ -1,18 +1,6 @@
 /* -------------------------
-   DISTRIBUCIÓN PRINCIPAL
-------------------------- */
-
-.perfil-contenido {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
-  gap: 20px;
-  align-items: start;
-}
-
-/* -------------------------
    TARJETAS PRINCIPALES
 ------------------------- */
-
 .perfil-card {
   min-width: 0;
   padding: 22px;
@@ -21,126 +9,33 @@
   background-color: var(--blanco);
   box-sizing: border-box;
 }
-
 .perfil-card-cabecera {
   margin-bottom: 22px;
 }
-
 .perfil-card-cabecera h2 {
   margin: 0 0 8px;
   color: var(--azul-3);
   font-size: 20px;
   font-weight: 700;
 }
-
 .perfil-card-cabecera p {
   margin: 0;
   color: var(--texto);
   font-size: 14px;
   line-height: 1.5;
 }
-
-/* -------------------------
-   DATOS PERSONALES
-------------------------- */
-
-.perfil-datos {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.perfil-dato {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  min-width: 0;
-  padding-bottom: 14px;
-  border-bottom: 1px solid #e6eef3;
-}
-
-.perfil-dato:last-child {
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.perfil-etiqueta {
-  color: var(--azul-2);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.perfil-valor {
-  color: var(--texto);
-  font-size: 15px;
-  font-weight: 500;
-  overflow-wrap: anywhere;
-}
-
-/* -------------------------
-   BOTONES DE EDICIÓN
-------------------------- */
-
-.perfil-edicion {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 24px;
-  padding-top: 20px;
-  border-top: 1px solid #e6eef3;
-}
-
-.perfil-boton-edicion {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  min-height: 40px;
-  padding: 10px 12px;
-  color: var(--azul-1);
-  background-color: #f4f9fc;
-  border: 1px solid #cbdfea;
-  border-radius: 7px;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: not-allowed;
-  opacity: 0.8;
-}
-
-/* -------------------------
-   ACCESIBILIDAD
-------------------------- */
-
-.perfil-boton:focus-visible {
-  outline: 2px solid var(--azul-4);
-  outline-offset: 3px;
-}
-
 /* =====================================
    RESPONSIVE - TABLET
    769px - 1023px
 ===================================== */
 
 @media (min-width: 769px) and (max-width: 1023px) {
-  /* DISTRIBUCIÓN PRINCIPAL */
-
-  .perfil-contenido {
-    width: 100%;
-    grid-template-columns: minmax(240px, 0.9fr) minmax(0, 1.6fr);
-    gap: 16px;
-    align-items: start;
-  }
-
   /* TARJETAS */
-
   .perfil-card {
     width: 100%;
     min-width: 0;
     padding: 16px;
   }
-
   .perfil-card-cabecera {
     margin-bottom: 18px;
   }
@@ -151,16 +46,6 @@
 
   .perfil-card-cabecera p {
     font-size: 13px;
-  }
-
-  /* DATOS PERSONALES */
-
-  .perfil-datos {
-    gap: 14px;
-  }
-
-  .perfil-valor {
-    font-size: 14px;
   }
 }
 
@@ -170,17 +55,9 @@
 ===================================== */
 
 @media (max-width: 768px) {
-  /* DISTRIBUCIÓN */
-
-  .perfil-contenido {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
   .perfil-card {
     padding: 18px;
   }
-
   .perfil-card-cabecera {
     margin-bottom: 18px;
   }
@@ -191,24 +68,5 @@
 
   .perfil-card-cabecera p {
     font-size: 13px;
-  }
-
-  /* DATOS */
-
-  .perfil-datos {
-    gap: 14px;
-  }
-
-  .perfil-etiqueta {
-    font-size: 12px;
-  }
-
-  .perfil-valor {
-    font-size: 14px;
-  }
-
-  .perfil-edicion {
-    margin-top: 20px;
-    padding-top: 16px;
   }
 }
