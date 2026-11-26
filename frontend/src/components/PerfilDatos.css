@@ -78,6 +78,23 @@
     gap: 14px;
   }
 
+  .perfil-valor {
+    font-size: 14px;
+  }
+}
+
+/* =====================================
+   RESPONSIVE - MÓVIL
+   Hasta 768px
+===================================== */
+
+@media (max-width: 768px) {
+  /* DATOS */
+
+  .perfil-datos {
+    gap: 14px;
+  }
+
   .perfil-etiqueta {
     font-size: 12px;
   }
