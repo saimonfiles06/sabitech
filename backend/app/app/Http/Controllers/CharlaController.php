@@ -9,8 +9,15 @@ use Illuminate\Http\Request;
 class CharlaController extends Controller
 {
     //Listado completo de charlas (todos los datos) Para todos los publicos.
-    public function index(): JsonResponse
+    public function index(Request $peticion): JsonResponse
     {
+        // Filtro opcional por rama: /api/charlas?rama=Tech
+        $datos = $peticion->validate(
+            ['rama' => ['nullable', 'in:Salud,Business,Tech']],
+            ['rama.in' => 'La rama debe ser Salud, Business o Tech.']
+        );
+        $rama = $datos['rama'] ?? null;
+
         // Subconsulta: reservas confirmadas de cada charla
         $reservasConfirmadas = DB::table('reservas')
             ->selectRaw('COUNT(*)')
@@ -39,7 +46,10 @@ class CharlaController extends Controller
                 'charlas.fecha_hora_fin',
             )
             ->selectSub($reservasConfirmadas, 'plazas_ocupadas') //Añadimos el dato de plazas ocupadas de la Subconsulta.
-            ->where('estado', 'activa')             
+            ->where('estado', 'activa')
+            ->when($rama, function ($consulta) use ($rama) {
+                $consulta->where('charlas.rama', $rama);
+            })
             ->orderBy('fecha_hora_charla')
             ->get();
 
