@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Nette\Schema\Message;
 
 class CharlaController extends Controller
@@ -123,11 +124,32 @@ class CharlaController extends Controller
         return response()->json($charla, 200);
     }
 
-    //Crear nueva charla
+    //Crear nueva charla POST /api/charlas
     public function creaCharla(Request $peticion): JsonResponse
     {
-        // TODO
-        return response()->json(['message' => 'Pendiente de implementar.'], 501);
+        // Permiso: solo el administrador
+    if ($peticion->user()->rol !== 'administrador') {
+        return response()->json(['mensaje' => 'No tienes permiso.'], 403);
+    }
+
+    $datos = $peticion->validate([
+        'sala_id'            => ['required', 'exists:salas,id'],
+        'ponente_id'         => ['nullable', Rule::exists('usuarios', 'id')->where('rol', 'ponente')],
+        'supervisor_id'      => ['nullable', Rule::exists('usuarios', 'id')->where('rol', 'supervisor')],
+        'titulo'             => ['required', 'string', 'max:100'],
+        'rama'               => ['required', 'string', 'max:50'],
+        'resumen_contenido'  => ['required', 'string'],
+        'contenido'          => ['required', 'string'],
+        'url_imagen'         => ['nullable', 'string'],
+        'fecha_hora_charla'  => ['required', 'date'],
+        'fecha_hora_entrada' => ['required', 'date', 'before_or_equal:fecha_hora_charla'],
+        'fecha_hora_fin'     => ['required', 'date', 'after:fecha_hora_charla'],
+    ]);
+
+    // insertGetId guarda la fila y devuelve el id nuevo
+    $idCharla = DB::table('charlas')->insertGetId($datos);
+
+    return response()->json(['id' => $idCharla], 201);
     }
 
     //Modifica charla
