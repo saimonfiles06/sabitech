@@ -21,20 +21,19 @@ Route::middleware('auth:sanctum')->group(function () {
     // Rutas usuario
     Route::get('/usuarios', [UsuarioController::class, 'index']);
     Route::get('/usuarios/{usuarioId}', [UsuarioController::class, 'idUsuario'])->whereNumber('usuarioId');
-    Route::put('/usuarios/{usuarioId}', [UsuarioController::class, 'actualizaUsuario'])->whereNumber('usuarioId');
-    Route::delete('/usuarios/{usuarioId}', [UsuarioController::class, 'borraUsuario'])->whereNumber('usuarioId');
+    Route::put('/usuarios/{usuarioId}', [UsuarioController::class, 'actualizaUsuario'])->whereNumber('usuarioId'); //TODO
+    Route::delete('/usuarios/{usuarioId}', [UsuarioController::class, 'borraUsuario'])->whereNumber('usuarioId'); //TODO
     
     //Rutas reservas
-    Route::get('/reservas', [ReservaController::class, 'index']);
+    Route::get('/reservas', [ReservaController::class, 'index']);  
     Route::post('/reservas', [ReservaController::class, 'reservar']);
     Route::get('/usuarios/{usuarioId}/reservas', [ReservaController::class, 'reservasUsuario'])->whereNumber('usuarioId');
     Route::get('/charlas/{charlaId}/reservas', [ReservaController::class, 'reservasCharla'])->whereNumber('charlaId');
-    Route::put('/reservas/{reservaId}', [ReservaController::class, 'modificaReserva'])->whereNumber('reservaId');
-    Route::delete('/reservas/{reservaId}', [ReservaController::class, 'borraReserva'])->whereNumber('reservaId');
-
+    Route::put('/reservas/{reservaId}', [ReservaController::class, 'modificaReserva'])->whereNumber('reservaId'); //TODO
+    Route::delete('/reservas/{reservaId}', [ReservaController::class, 'borraReserva'])->whereNumber('reservaId'); //TODO
     //Rutas charlas
     Route::post('/charlas', [CharlaController::class, 'creaCharla']);
-    Route::put('/charlas/{charlaId}', [CharlaController::class, 'modificaCharla'])->whereNumber('charlaId');
-    Route::delete('/charlas/{charlaId}', [CharlaController::class, 'borraCharla'])->whereNumber('charlaId');
+    Route::put('/charlas/{charlaId}', [CharlaController::class, 'modificaCharla'])->whereNumber('charlaId'); //TODO
+    Route::delete('/charlas/{charlaId}', [CharlaController::class, 'borraCharla'])->whereNumber('charlaId'); //TODO
 
 });

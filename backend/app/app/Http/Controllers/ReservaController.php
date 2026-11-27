@@ -175,10 +175,42 @@ class ReservaController extends Controller
         return response()->json(['message' => 'No tienes permisos para esta acción.'], 403);
     }
 
-     public function reservasCharla(Request $request, int $idCharla): JsonResponse
+     public function reservasCharla(Request $request,Request $peticion, int $idCharla): JsonResponse
     {
-        // TODO
-        return response()->json(['message' => 'Pendiente de implementar.'], 501);
+        $usuarioActual = $request->user();
+        
+        
+        //Muestra si eres admin o supervisor
+        if ($usuarioActual->rol === 'administrador' || $usuarioActual->rol == 'supervisor') {
+            
+            // Filtro opcional por estado: /api/reserva?estado=cancelada
+            $datos = $peticion->validate(
+                ['estado' => ['nullable', 'in:activa, cancelada']],
+                ['estado.in' => 'El estado ha de ser activa o cancelada.']
+            );
+            $estado = $datos['estado'] ?? null;
+
+            $reservas = DB::table('reservas')
+                ->join('usuarios', 'usuario_id', '=', 'usuario.id')
+                ->select(
+                'reservas.id',
+                'usuarios.nombre',
+                'usuarios.apellidos',
+                'created_at',
+                'updated_at'
+                )
+                ->where('charlas.id', $idCharla)
+                ->when($estado, function ($consulta) use ($estado) {
+                $consulta->where('charlas.rama', $estado);
+            })
+                ->orderBy('reservas.id')
+                ->get();
+
+                        return response()->json($reservas, 200);
+        }
+
+        //Si no eres el administrador o supervisor, no muestra nada.
+        return response()->json(['message' => 'No tienes permisos para esta acción.'], 403);
     }
 
     public function modificaReserva(Request $request, int $idReserva): JsonResponse
