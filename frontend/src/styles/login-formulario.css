@@ -1,59 +1,4 @@
 /* -------------------------
-   CONTENEDOR PRINCIPAL
-------------------------- */
-
-.login {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
-  box-sizing: border-box;
-}
-
-/* -------------------------
-   TARJETA DE LOGIN
-------------------------- */
-
-.login-contenedor {
-  width: 100%;
-  max-width: 420px;
-  padding: 36px;
-  border: 1px solid #8884;
-  border-radius: 12px;
-  background-color: transparent;
-  box-sizing: border-box;
-}
-
-/* -------------------------
-   CABECERA
-------------------------- */
-
-.login-header {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.login-header h1 {
-  margin: 0 0 28px;
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.login-header h2 {
-  margin: 0 0 10px;
-  font-size: 24px;
-}
-
-.login-header p {
-  margin: 0;
-  font-size: 14px;
-  opacity: 0.8;
-  line-height: 1.5;
-}
-
-/* -------------------------
    FORMULARIO
 ------------------------- */
 
@@ -97,7 +42,6 @@
   border-color: #3986c8;
   box-shadow: 0 0 0 3px #3986c833;
 }
-
 /* -------------------------
    CONTRASEÑA
 ------------------------- */
@@ -127,17 +71,15 @@
 .login-password-toggle:hover {
   text-decoration: underline;
 }
-
 /* -------------------------
    ERRORES
 ------------------------- */
 
 .login-error {
-  margin: -8px 0 0;
+  margin: -4px 0 0;
   color: #d64545;
   font-size: 13px;
 }
-
 /* -------------------------
    BOTÓN PRINCIPAL
 ------------------------- */
@@ -164,53 +106,14 @@
   outline: 2px solid #3986c8;
   outline-offset: 3px;
 }
-
-/* -------------------------
-   PIE DEL FORMULARIO
-------------------------- */
-
-.login-footer {
-  margin-top: 28px;
-  text-align: center;
-}
-
-.login-footer p {
-  margin: 0;
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-.login-footer a {
-  color: #3986c8;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.login-footer a:hover {
-  text-decoration: underline;
-}
-
 /* =====================================
    RESPONSIVE - TABLET
    769px - 1023px
 ===================================== */
 
 @media (min-width: 769px) and (max-width: 1023px) {
-  .login {
-    padding: 30px 20px;
-  }
-
-  .login-contenedor {
-    max-width: 400px;
-    padding: 32px;
-  }
-
-  .login-header h1 {
-    font-size: 27px;
-  }
-
-  .login-header h2 {
-    font-size: 23px;
+  .login-formulario {
+    gap: 17px;
   }
 }
 
@@ -220,38 +123,8 @@
 ===================================== */
 
 @media (max-width: 768px) {
-  .login {
-    min-height: 100vh;
-    padding: 24px 16px;
-    align-items: flex-start;
-    box-sizing: border-box;
-  }
-
-  .login-contenedor {
-    width: 100%;
-    max-width: 100%;
-    padding: 28px 22px;
-  }
-
-  .login-header {
-    margin-bottom: 26px;
-  }
-
-  .login-header h1 {
-    font-size: 25px;
-    margin-bottom: 22px;
-  }
-
-  .login-header h2 {
-    font-size: 21px;
-  }
-
-  .login-header p {
-    font-size: 13px;
-  }
-
   .login-formulario {
-    gap: 19px;
+    gap: 16px;
   }
 
   .login-campo label {
@@ -275,13 +148,5 @@
   .login-boton {
     padding: 12px;
     font-size: 14px;
-  }
-
-  .login-footer {
-    margin-top: 24px;
-  }
-
-  .login-footer p {
-    font-size: 13px;
   }
 }

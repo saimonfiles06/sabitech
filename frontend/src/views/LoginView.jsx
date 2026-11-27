@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ApiError } from "../api/ApiError.js";
 import { useAuth } from "../auth/ContextoAuth.jsx";
-import "./LoginView.css";
+import "../styles/login-tarjeta.css";
+import "../styles/login-formulario.css";
 
 export function LoginView() {
   const [correo, setCorreo] = useState("");
