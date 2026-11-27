@@ -1,0 +1,270 @@
+/* -------------------------
+   DATOS COMPLEMENTARIOS
+------------------------- */
+
+.tarjeta-charla-datos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  gap: 16px 20px;
+
+  min-width: 0;
+  padding-left: 24px;
+  border-left: 1px solid var(--borde);
+}
+
+.dato-charla {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.dato-charla > i {
+  flex-shrink: 0;
+  margin-top: 3px;
+
+  color: var(--azul-2);
+  font-size: 17px;
+}
+
+.dato-charla > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.dato-charla-label {
+  color: #71869a;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.dato-charla strong {
+  color: var(--texto);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* Horario */
+
+.dato-charla-horario {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.dato-charla-fin {
+  color: #71869a;
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* -------------------------
+   BOTONES DE ACCIÓN
+------------------------- */
+
+.tarjeta-charla-acciones {
+  grid-column: 2;
+  grid-row: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
+
+  min-width: 0;
+}
+
+.tarjeta-charla-acciones button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 12px;
+
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.tarjeta-charla-acciones button i {
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+/* Ver detalles */
+
+.boton-detalles-charla {
+  color: var(--azul-1);
+  background-color: var(--blanco);
+  border: 1px solid var(--azul-1);
+}
+
+.boton-detalles-charla:hover {
+  color: var(--blanco);
+  background-color: var(--azul-1);
+}
+
+/* Reservar asistencia */
+
+.boton-reservar-charla {
+  color: var(--blanco);
+  background-color: var(--azul-1);
+  border: 1px solid var(--azul-1);
+}
+
+.boton-reservar-charla:hover {
+  color: var(--blanco);
+  background-color: var(--azul-oscuro);
+  border-color: var(--azul-oscuro);
+}
+/* -------------------------
+   RESERVA
+------------------------- */
+
+/* Botón de reservar mientras se envía la petición */
+.boton-reservar-charla:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+/* -------------------------
+   ACCESIBILIDAD
+------------------------- */
+
+.tarjeta-charla-acciones button:focus-visible {
+  outline: 2px solid var(--azul-4);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta-charla-acciones button {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* =====================================
+   RESPONSIVE - TABLET
+   769px - 1023px
+===================================== */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  /* DATOS Y ACCIONES */
+
+  .tarjeta-charla-datos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    gap: 14px 10px;
+
+    padding: 15px 0 0;
+
+    border-left: none;
+    border-top: 1px solid var(--borde);
+  }
+
+  .dato-charla-horario {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .tarjeta-charla-acciones {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    gap: 7px;
+  }
+
+  .tarjeta-charla-acciones button {
+    min-height: 34px;
+    padding: 7px 5px;
+    font-size: 11px;
+  }
+}
+
+/* =====================================
+   RESPONSIVE - MÓVIL
+   Hasta 768px
+===================================== */
+
+@media (max-width: 768px) {
+  /* DATOS */
+
+  .tarjeta-charla-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+
+    padding: 12px 0 0;
+
+    border-left: none;
+    border-top: 1px solid var(--borde);
+  }
+
+  .dato-charla {
+    gap: 7px;
+  }
+
+  .dato-charla > i {
+    margin-top: 2px;
+    font-size: 14px;
+  }
+
+  .dato-charla > div {
+    gap: 3px;
+  }
+
+  .dato-charla-label {
+    font-size: 9px;
+  }
+
+  .dato-charla strong {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .dato-charla-fin {
+    font-size: 10px;
+  }
+
+  /* BOTONES */
+
+  .tarjeta-charla-acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 3px;
+  }
+
+  .tarjeta-charla-acciones button {
+    min-height: 34px;
+    padding: 7px 5px;
+    font-size: 10px;
+    gap: 5px;
+  }
+
+  .tarjeta-charla-acciones button i {
+    font-size: 12px;
+  }
+}

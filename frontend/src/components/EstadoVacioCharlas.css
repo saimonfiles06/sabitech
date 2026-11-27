@@ -1,0 +1,57 @@
+/* -------------------------
+   SIN CHARLAS
+------------------------- */
+
+.inicio-sin-charlas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 55px 20px;
+
+  background-color: var(--blanco);
+  border: 1px dashed #bfd5e3;
+  border-radius: 12px;
+
+  text-align: center;
+}
+
+.inicio-sin-charlas > i {
+  color: var(--azul-2);
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.inicio-sin-charlas h3 {
+  margin: 0 0 8px;
+  color: var(--azul-oscuro);
+  font-size: 18px;
+}
+
+.inicio-sin-charlas p {
+  margin: 0;
+  color: var(--texto);
+  font-size: 14px;
+  opacity: 0.75;
+}
+/* =====================================
+   RESPONSIVE - MÓVIL
+   Hasta 768px
+===================================== */
+
+@media (max-width: 768px) {
+  /* SIN CHARLAS */
+
+  .inicio-sin-charlas {
+    padding: 40px 15px;
+  }
+
+  .inicio-sin-charlas h3 {
+    font-size: 16px;
+  }
+
+  .inicio-sin-charlas p {
+    font-size: 12px;
+  }
+}

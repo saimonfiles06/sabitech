@@ -1,0 +1,207 @@
+/* -------------------------
+   HEADER
+------------------------- */
+
+.inicio-header {
+  height: 80px;
+  margin: 0 auto;
+  padding: 0 24px;
+  background-color: var(--fondo);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--borde);
+  box-sizing: border-box;
+}
+
+.inicio-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.inicio-logo img {
+  height: 65px;
+  max-width: 180px;
+  object-fit: contain;
+}
+
+.inicio-accesos {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.inicio-accesos a {
+  padding: 10px 20px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* Botón iniciar sesión */
+
+.inicio-boton-login {
+  color: var(--azul-1);
+  background-color: transparent;
+  border: 1px solid var(--azul-1);
+}
+
+.inicio-boton-login:hover {
+  color: var(--blanco);
+  background-color: var(--azul-1);
+}
+
+/* Botón crear cuenta */
+
+.inicio-boton-registro {
+  color: var(--blanco);
+  background-color: var(--azul-1);
+  border: 1px solid var(--azul-1);
+}
+
+.inicio-boton-registro:hover {
+  color: var(--blanco);
+  background-color: var(--azul-oscuro);
+  border-color: var(--azul-oscuro);
+}
+
+/* Botón mi perfil */
+
+.inicio-boton-perfil {
+  color: var(--blanco);
+  background-color: var(--azul-1);
+  border: 1px solid var(--azul-1);
+  gap: 8px;
+}
+
+.inicio-boton-perfil:hover {
+  color: var(--blanco);
+  background-color: var(--azul-oscuro);
+  border-color: var(--azul-oscuro);
+}
+
+/* Dimensiones comunes de botones */
+
+.inicio-boton-perfil,
+.inicio-boton-login,
+.inicio-boton-registro {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 125px;
+  min-width: 125px;
+  height: 40px;
+  padding: 10px 12px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+/* -------------------------
+   ACCESIBILIDAD
+------------------------- */
+
+.inicio-accesos a:focus-visible,
+.tarjeta-charla-acciones button:focus-visible {
+  outline: 2px solid var(--azul-4);
+  outline-offset: 3px;
+}
+
+/* =====================================
+   RESPONSIVE - TABLET
+   769px - 1023px
+===================================== */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  /* HEADER */
+
+  .inicio-header {
+    padding: 0 20px;
+    gap: 12px;
+  }
+
+  .inicio-logo img {
+    height: 58px;
+  }
+
+  .inicio-accesos {
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+
+  .inicio-accesos span {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .inicio-boton-perfil,
+  .inicio-boton-login,
+  .inicio-boton-registro {
+    width: 115px;
+    min-width: 115px;
+    height: 38px;
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+}
+
+/* =====================================
+   RESPONSIVE - MÓVIL
+   Hasta 768px
+===================================== */
+
+@media (max-width: 768px) {
+  /* HEADER */
+
+  .inicio-header {
+    height: auto;
+    min-height: 70px;
+    padding: 10px 16px;
+    gap: 12px;
+  }
+
+  .inicio-logo img {
+    height: 48px;
+    max-width: 125px;
+  }
+
+  .inicio-accesos {
+    gap: 7px;
+  }
+
+  .inicio-accesos a {
+    padding: 9px 11px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .inicio-boton-perfil,
+  .inicio-boton-login,
+  .inicio-boton-registro {
+    width: auto;
+    min-width: 0;
+    height: 36px;
+    padding: 9px 11px;
+    font-size: 12px;
+  }
+
+  .inicio-boton-perfil {
+    gap: 5px;
+  }
+
+  /* Ocultar botón crear cuenta */
+
+  .inicio-boton-registro {
+    display: none;
+  }
+}

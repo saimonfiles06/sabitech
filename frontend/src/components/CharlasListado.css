@@ -1,0 +1,98 @@
+.inicio-bloque {
+  margin-bottom: 40px;
+}
+
+/* -------------------------
+   CABECERA DE CHARLAS
+------------------------- */
+
+.inicio-bloque-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.inicio-bloque-cabecera h2 {
+  margin: 0;
+  color: var(--azul-3);
+  font-size: 25px;
+}
+
+.inicio-bloque-cabecera p {
+  margin: 5px 0 0;
+  color: var(--azul-4);
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.inicio-total-charlas {
+  flex-shrink: 0;
+  padding: 7px 13px;
+  color: var(--azul-1);
+  background-color: #e8f3fb;
+  border: 1px solid #cde3f3;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+/* -------------------------
+   LISTADO DE CHARLAS
+------------------------- */
+
+.lista-charlas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* =====================================
+   RESPONSIVE - TABLET
+   769px - 1023px
+===================================== */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  /* DOS COLUMNAS */
+
+  .lista-charlas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+/* =====================================
+   RESPONSIVE - MÓVIL
+   Hasta 768px
+===================================== */
+
+@media (max-width: 768px) {
+  .inicio-bloque {
+    margin-bottom: 30px;
+  }
+
+  .inicio-bloque-cabecera {
+    margin-bottom: 17px;
+    gap: 8px;
+  }
+
+  .inicio-bloque-cabecera h2 {
+    font-size: 20px;
+  }
+
+  .inicio-bloque-cabecera p {
+    font-size: 12px;
+  }
+
+  .inicio-total-charlas {
+    padding: 6px 9px;
+    font-size: 11px;
+  }
+
+  /* DOS COLUMNAS */
+
+  .lista-charlas {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}

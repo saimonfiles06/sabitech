@@ -1,0 +1,292 @@
+/* -------------------------
+   TARJETA DE CHARLA
+------------------------- */
+
+.tarjeta-charla {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(340px, 1fr);
+  align-items: stretch;
+  gap: 28px;
+
+  padding: 22px 24px;
+
+  background-color: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+
+  box-shadow: 0 2px 8px rgba(7, 59, 99, 0.04);
+
+  box-sizing: border-box;
+  min-width: 0;
+
+  animation: aparecer-charla 0.5s ease both;
+  animation-delay: var(--retraso, 0ms);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.tarjeta-charla:hover {
+  transform: translateY(-3px);
+  border-color: #b7d8ec;
+  box-shadow: 0 7px 20px rgba(7, 59, 99, 0.09);
+}
+
+/* Animación de entrada */
+
+@keyframes aparecer-charla {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------
+   CONTENIDO PRINCIPAL E IMAGEN
+------------------------- */
+
+.tarjeta-charla-contenido {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  min-width: 0;
+  min-height: 190px;
+  padding: 22px;
+
+  background: #073b63;
+
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+/* Rama tecnológica: morado */
+.tarjeta-charla-contenido.tech {
+  background:
+    radial-gradient(
+      ellipse at top left,
+      rgb(190, 100, 255) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      rgb(100, 0, 200) 0%,
+      transparent 65%
+    ),
+    #241044;
+}
+
+/* Rama salud: verde */
+.tarjeta-charla-contenido.salud {
+  background:
+    radial-gradient(
+      ellipse at top left,
+      rgb(100, 255, 170) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      rgb(0, 150, 90) 0%,
+      transparent 65%
+    ),
+    #073b2b;
+}
+
+/* Rama business: naranja */
+/* Rama business: naranja Xtart */
+.tarjeta-charla-contenido.business {
+  background:
+    radial-gradient(
+      ellipse at top left,
+      rgb(255, 160, 100) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse at bottom right,
+      rgb(255, 68, 47) 0%,
+      transparent 65%
+    ),
+    #54260e;
+}
+
+/* Imagen de fondo */
+.imagen-fondo-charla {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition: transform 0.5s ease;
+}
+
+.tarjeta-charla:hover .imagen-fondo-charla {
+  transform: scale(1.04);
+}
+
+/* Capa de oscurecimiento para imágenes */
+.tarjeta-charla-contenido::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: transparent;
+}
+
+/* Aplicar el degradado oscuro únicamente con imagen */
+.tarjeta-charla-contenido.con-imagen::before {
+  background: linear-gradient(
+    110deg,
+    rgba(7, 59, 99, 0.94) 0%,
+    rgba(22, 100, 194, 0.78) 55%,
+    rgba(7, 59, 99, 0.52) 100%
+  );
+}
+
+/* Rama */
+
+.etiqueta-rama {
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+
+  padding: 4px 11px;
+
+  color: var(--blanco);
+  background-color: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+/* Título */
+
+.titulo-charla {
+  display: block;
+  margin: 10px 0 7px;
+
+  color: var(--blanco);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+
+  overflow-wrap: anywhere;
+}
+
+/* Resumen */
+
+.resumen-charla {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 14px;
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta-charla,
+  .imagen-fondo-charla {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* =====================================
+   RESPONSIVE - TABLET
+   769px - 1023px
+===================================== */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  /* TARJETAS VERTICALES */
+
+  .tarjeta-charla {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding: 18px;
+  }
+
+  /* IMAGEN Y CONTENIDO */
+
+  .tarjeta-charla-contenido {
+    min-height: 190px;
+    padding: 18px;
+  }
+
+  .titulo-charla {
+    font-size: 16px;
+  }
+
+  .resumen-charla {
+    font-size: 13px;
+  }
+}
+
+/* =====================================
+   RESPONSIVE - MÓVIL
+   Hasta 768px
+===================================== */
+
+@media (max-width: 768px) {
+  /* TARJETAS */
+
+  .tarjeta-charla {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 13px;
+
+    padding: 11px;
+    border-radius: 10px;
+  }
+
+  .tarjeta-charla:hover {
+    transform: translateY(-2px);
+  }
+
+  /* IMAGEN */
+
+  .tarjeta-charla-contenido {
+    min-height: 190px;
+    padding: 13px 11px;
+    border-radius: 8px;
+  }
+
+  .etiqueta-rama {
+    padding: 3px 7px;
+    font-size: 10px;
+  }
+
+  .titulo-charla {
+    margin: 8px 0 6px;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .resumen-charla {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}
