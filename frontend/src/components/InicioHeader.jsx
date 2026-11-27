@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth/ContextoAuth.jsx";
 import logoTexto from "../assets/img/logo_texto.ico";
+import "./InicioHeader.css";
 
 function InicioHeader() {
   const { usuario } = useAuth();

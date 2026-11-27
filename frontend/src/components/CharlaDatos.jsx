@@ -1,4 +1,5 @@
 import { formatearFecha } from "../utils/formatoFecha.js";
+import "./CharlaDatos.css";
 
 function CharlaDatos({ charla, yaReservada, reservando, onReservar }) {
   return (
@@ -55,7 +56,11 @@ function CharlaDatos({ charla, yaReservada, reservando, onReservar }) {
           onClick={() => onReservar(charla.id)}
           disabled={yaReservada || reservando}
         >
-          <i className={yaReservada ? "bi bi-calendar-check-fill" : "bi bi-calendar-check"}></i>
+          <i
+            className={
+              yaReservada ? "bi bi-calendar-check-fill" : "bi bi-calendar-check"
+            }
+          ></i>
           {yaReservada
             ? "Plaza reservada"
             : reservando

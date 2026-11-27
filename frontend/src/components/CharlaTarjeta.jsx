@@ -1,4 +1,5 @@
 import CharlaDatos from "./CharlaDatos.jsx";
+import "./CharlaTarjeta.css";
 
 function CharlaTarjeta({ charla, index, yaReservada, reservando, onReservar }) {
   return (

@@ -1,7 +1,13 @@
 import CharlaTarjeta from "./CharlaTarjeta.jsx";
 import EstadoVacioCharlas from "./EstadoVacioCharlas.jsx";
+import "./CharlasListado.css";
 
-function CharlasListado({ charlas, idsReservadas, idCharlaEnProceso, onReservar }) {
+function CharlasListado({
+  charlas,
+  idsReservadas,
+  idCharlaEnProceso,
+  onReservar,
+}) {
   return (
     <section className="inicio-bloque">
       {/* CABECERA DEL LISTADO */}

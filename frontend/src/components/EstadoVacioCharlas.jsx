@@ -1,3 +1,4 @@
+import "./EstadoVacioCharlas.css";
 //Componente para cuando no hay charlas guardadas
 function EstadoVacioCharlas() {
   return (
